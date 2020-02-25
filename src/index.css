@@ -1,3 +1,9 @@
+/* Fonts */
+@font-face {
+  font-family: titleFont;
+  src: url(PatinioBasica.ttf);
+}
+
 /* Add a black background color to the top navigation */
 .topnav {
   background-color: #333;
@@ -13,15 +19,27 @@
   float: right;
   color: #f2f2f2;
   text-align: center;
-  padding: 14px 16px;
+  padding: 16px 16px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 14px;
+  font-family: arial;
+  font-weight: bold;
+}
 
-
+.topnav b {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 10px 16px;
+  text-decoration: none;
+  font-size: 26px;
+  font-family: arial;
+  font-weight: bold;
 }
 
 /* Change the color of links on hover */
 .topnav a:hover {
+  padding-bottom: 19px;
   border-radius: 10px;
   background-color: #ddd;
   color: black;

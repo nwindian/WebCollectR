@@ -7,8 +7,9 @@ class HomeTaskBar extends React.Component{
     render() {
         return (
             <div class = "topnav">
-                  <a href="#SignUp">SignUp</a>
-                  <a href="#Login">Login</a>
+                <b>CollectR</b>
+                <a href="#SignUp">SignUp</a>
+                <a href="#Login">Login</a>
             </div>
         );
     }
