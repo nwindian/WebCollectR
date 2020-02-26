@@ -44,3 +44,42 @@
   background-color: #ddd;
   color: black;
 }
+
+/* Textbox for logging in/registering */
+#logintextbox {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Textbox for logging in/registering */
+#logintextbox2 {
+  border-radius: 15px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+/* Form holding login/register */
+#loginform {
+  position: fixed;
+  top: 50%;
+  left: 35%;
+}
+
+#loginregistertext {
+  font-family: arial;
+  font-size: 20px;
+}
+
+#logo {
+  color: #333;
+  position: fixed;
+  top: 30%;
+  left: 42%;  font-family: arial;
+  font-size: 65px;
+  font-weight: bold;
+}
