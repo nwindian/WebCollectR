@@ -15,18 +15,31 @@
 }
 
 /* Style the links inside the navigation bar */
-.topnav a {
+.topnav #a {
+
+  background: none;
+  border: none;
   float: right;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 16px 16px;
+  color: white;
+  text-align: center; 
+  padding-right: 10px;
+  border-spacing: 5px;
+  padding-top: 15px;
+  padding-bottom: 10px;
   text-decoration: none;
   font-size: 14px;
   font-family: arial;
   font-weight: bold;
+  border-radius: 10px;
 }
 
-.topnav b {
+.topnav #a:hover {
+  color : #C0C0C0;
+}
+
+.HomeButton {
+  background: none;
+  border:none;
   float: left;
   color: #f2f2f2;
   text-align: center;
@@ -36,6 +49,15 @@
   font-family: arial;
   font-weight: bold;
 }
+
+.HomeButton:link{
+  background: none;
+  border:none;
+}
+.HomeButton:focus {
+  outline:0;
+}
+
 
 /* Change the color of links on hover */
 .topnav a:hover {
@@ -73,6 +95,7 @@
 #loginregistertext {
   font-family: arial;
   font-size: 20px;
+  
 }
 
 #logo {
