@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import '../index.css';
+import { Link, withRouter } from 'react-router-dom'
 class Register extends React.Component{
 
     render() {
@@ -8,11 +9,17 @@ class Register extends React.Component{
         return (
             <div>
                 <div class = "topnav">
-                    <button class="HomeButton" id="b" href="#home">CollectR</button>
-                    <button id="a" href="#SignUp">SignUp</button>
-                    <button id="a" href="#Login">Login</button>
+                    <Link to="/">
+                      <button class="HomeButton" id="b" href="#home">CollectR</button>
+                    </Link>
+                    <Link to="/Register">
+                      <button id="a">SignUp</button>
+                    </Link>
+                    <Link to="/Login">
+                      <button id="a" href="#Login">Login</button>
+                    </Link>
                 </div>
-                <div id="logo">CollectR</div>
+                <div id="logo">Collect</div>
 
                 <div>
                     <form id="loginform">
