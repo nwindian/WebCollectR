@@ -17,16 +17,16 @@ import Register from './components/Register.js';
         <div>
  		<Switch>
  		  <Route path='/Login'>
-            <Login />
-          </Route>
+        <Login />
+      </Route>
 
  		  <Route path='/Register'>
-            <Register />
-          </Route>
+        <Register setPass = {props.setPass} setEmail = {props.setEmail} handleRegister = {props.handleRegister} />
+      </Route>
 
-          <Route path='/'> 
-            <Login />
-          </Route>  
+      <Route path='/'> 
+        <Login />
+      </Route>  
  		</Switch>
         </div>
     );

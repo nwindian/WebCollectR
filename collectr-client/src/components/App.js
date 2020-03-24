@@ -10,7 +10,32 @@ class App extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = { apiResponse: "" };
+		this.state = { apiResponse: "",
+		  email: "",
+		  password: "" 
+		};
+		this.setEmail = this.setEmail.bind(this);
+		this.setPass = this.setPass.bind(this);
+		this.handleRegister = this.handleRegister.bind(this);
+	}
+
+	//Call api to insert into db
+	handleRegister() {
+		alert(this.state.email);
+	}
+
+	//set email state
+	setEmail = (e) => {
+		this.setState({
+			email: e.target.value
+		})
+	}
+
+	//set Password state
+	setPass = (e) => {
+		this.setState({
+			password: e.target.value
+		})
 	}
 
 	callAPI(){
@@ -26,7 +51,7 @@ class App extends React.Component {
     render() {
         return (
             <div className="HomeNavBar">
-                //<Routes />
+                <Routes  setPass = {this.setPass} setEmail = {this.setEmail} handleRegister = {this.handleRegister}/>
                 <p className="App-intro">{this.state.apiResponse}</p>      
             </div>   
         );

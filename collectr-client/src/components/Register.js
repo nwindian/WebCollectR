@@ -19,17 +19,17 @@ class Register extends React.Component{
                       <button id="a" href="#Login">Login</button>
                     </Link>
                 </div>
-                <div id="logo">Collect</div>
+                <div id="logo">CollectR</div>
 
                 <div>
                     <form id="loginform">
                         <label id="loginregistertext">Email</label>
-                        <input type="text" id="logintextbox" />
+                        <input type="text" id="logintextbox" onChange={e => this.props.setEmail(e)} />
 
                         <label id="loginregistertext">Password</label>
-                        <input type="Password" id="logintextbox" />
+                        <input type="Password" id="logintextbox" onChange={e => this.props.setPass(e)} />
 
-                        <button id="button">SignUp </button>
+                        <button id="button" onClick={this.props.handleRegister}>SignUp </button>
                     </form>
                 </div>
             </div>
