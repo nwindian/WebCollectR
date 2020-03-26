@@ -9,9 +9,9 @@ class Login extends React.Component{
 
         return (
             <div>
-                <div class = "topnav">
+                <div className = "topnav">
                     <Link to="/">
-                      <button class="HomeButton" id="b" href="#home">CollectR</button>
+                      <button className="HomeButton" id="b" href="#home">CollectR</button>
                     </Link>
                     <Link to="/Register">
                       <button id="a">SignUp</button>
