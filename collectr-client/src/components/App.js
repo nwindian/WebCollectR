@@ -6,6 +6,7 @@ import Register from './Register.js'
 import '../index.css';
 import Routes from '../routes.js';
 import axios from 'axios';
+import qs from 'qs';
 
 class App extends React.Component {
 
@@ -22,33 +23,31 @@ class App extends React.Component {
 	}
 
 	//Call api to insert into db
-	handleRegister = e => {
+	handleRegister = (e) => {
 
 		//preventDefault();
 		//alert(this.state.email);
-		const { email, password} = this.state;
+		if(this.state.email != "" && this.state.password != ""){
 
-		const user = {
-			email,
-			password,
-		};
+			const { email, password} = this.state;
 
-		axios.defaults.withCredentials = true;
-		axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-		axios
-			.post('http://localhost:9000/api/registerUser', user)
-			.then(function (response){
-				console.log(response);
-				return response.json();
-			})
-			.catch(err => {
-				console.log(err.response);
-				console.log(err.request.headers);
-			});
+			const user = {
+				email,
+				password,
+			};
+			//alert(user.email);
 
-		//fetch("http://localhost:9000/registerUser")
-		//.then(response => response.json())
-		//.then(data => this.setState{})
+			axios.defaults.withCredentials = true;
+			axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+			axios
+				.post('http://localhost:9000/api/registerUser', user)
+				.then(function (response){
+					console.log(response);
+				})
+				.catch(err => {
+					console.log(err.response);
+				});
+		}
 	}
 
 	//set email state
@@ -81,7 +80,7 @@ class App extends React.Component {
     render() {
         return (
             <div className="HomeNavBar">
-                <Routes  setPass = {this.setPass} setEmail = {this.setEmail} handleRegister = {this.handleRegister()}/>
+                <Routes  setPass = {this.setPass} setEmail = {this.setEmail} handleRegister = {this.handleRegister}/>
                 <p className="App-intro">{this.state.apiResponse}</p>      
             </div>   
         );
