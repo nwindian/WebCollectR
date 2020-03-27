@@ -5,6 +5,8 @@ import Login from './Login.js'
 import Register from './Register.js'
 import '../index.css';
 import Routes from '../routes.js';
+import axios from 'axios';
+import qs from 'qs';
 
 class App extends React.Component {
 
@@ -17,15 +19,40 @@ class App extends React.Component {
 		this.setEmail = this.setEmail.bind(this);
 		this.setPass = this.setPass.bind(this);
 		this.handleRegister = this.handleRegister.bind(this);
+		axios.defaults.withCredentials = true;
 	}
 
 	//Call api to insert into db
-	handleRegister() {
-		alert(this.state.email);
+	handleRegister = (e) => {
+
+		//preventDefault();
+		//alert(this.state.email);
+		if(this.state.email != "" && this.state.password != ""){
+
+			const { email, password} = this.state;
+
+			const user = {
+				email,
+				password,
+			};
+			//alert(user.email);
+
+			axios.defaults.withCredentials = true;
+			axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+			axios
+				.post('http://localhost:9000/api/registerUser', user)
+				.then(function (response){
+					console.log(response);
+				})
+				.catch(err => {
+					console.log(err.response);
+				});
+		}
 	}
 
 	//set email state
 	setEmail = (e) => {
+		e.preventDefault();
 		this.setState({
 			email: e.target.value
 		})
@@ -33,6 +60,7 @@ class App extends React.Component {
 
 	//set Password state
 	setPass = (e) => {
+		e.preventDefault();
 		this.setState({
 			password: e.target.value
 		})
@@ -44,8 +72,9 @@ class App extends React.Component {
 			.then(res => this.setState({ apiResponse: res}));
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		this.callAPI();
+		this.handleRegister();
 	}
 
     render() {

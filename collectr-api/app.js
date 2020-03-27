@@ -5,26 +5,44 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
 
+var mysql = require('mysql');
+
+var app = express();
+
+//CORS
+app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+app.options('*', cors());
+
+//Routes
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var testAPIRouter = require('./routes/testAPI');
+var registerUserRouter = require('./routes/registerUser');
 
-var app = express();
+
+//Connection to db
+const connection = mysql.createConnection({
+	host: 'localhost',
+	user:'root',
+	password:'Pioneer1177!?!?',
+	database: 'collectr'
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-app.use(cors());
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use("/testAPI", testAPIRouter);
+app.use("/api/registerUser", registerUserRouter);
+app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
