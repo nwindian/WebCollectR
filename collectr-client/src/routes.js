@@ -17,7 +17,7 @@ import Register from './components/Register.js';
         <div>
  		<Switch>
  		  <Route path='/Login'>
-        <Login />
+        <Login setPass = {props.setPass} setEmail = {props.setEmail} handleLogin = {props.handleLogin} />
       </Route>
 
  		  <Route path='/Register'>
@@ -25,7 +25,7 @@ import Register from './components/Register.js';
       </Route>
 
       <Route path='/'> 
-        <Login />
+        <Login setPass = {props.setPass} setEmail = {props.setEmail} handleLogin = {props.handleLogin}  />
       </Route>  
  		</Switch>
         </div>

@@ -14,19 +14,35 @@ class App extends React.Component {
 		super(props);
 		this.state = { apiResponse: "",
 		  email: "",
-		  password: "" 
+		  password: "",
+		  loginPressed: false
 		};
 		this.setEmail = this.setEmail.bind(this);
 		this.setPass = this.setPass.bind(this);
 		this.handleRegister = this.handleRegister.bind(this);
+		this.handleLogin = this.handleLogin.bind(this);
 		axios.defaults.withCredentials = true;
+	}
+
+
+	handleLogin = () => {
+
+		alert(this.state.email);
+		if(this.state.email != "" && this.state.password != ""){
+			this.state.loginPressed = true;
+		}
+		//alert("HIII");
+		if((this.state.email == "" || this.state.password == "") && this.state.loginPressed == true) {
+			alert("Please complete form.");
+		}
+		else if (this.state.email != "" && this.state.password != "" && this.state.loginPressed == true){
+			alert("login boy");
+		}
 	}
 
 	//Call api to insert into db
 	handleRegister = (e) => {
 
-		//preventDefault();
-		//alert(this.state.email);
 		if(this.state.email != "" && this.state.password != ""){
 
 			const { email, password} = this.state;
@@ -73,14 +89,15 @@ class App extends React.Component {
 	}
 
 	componentDidMount() {
-		this.callAPI();
-		this.handleRegister();
+		//this.callAPI();
+		//this.handleRegister();
+		//this.handleLogin();
 	}
 
     render() {
         return (
             <div className="HomeNavBar">
-                <Routes  setPass = {this.setPass} setEmail = {this.setEmail} handleRegister = {this.handleRegister}/>
+                <Routes  password = {this.state.password} email = {this.state.email} setPass = {this.setPass} setEmail = {this.setEmail} handleRegister = {this.handleRegister} handleLogin = {this.handleLogin}/>
                 <p className="App-intro">{this.state.apiResponse}</p>      
             </div>   
         );

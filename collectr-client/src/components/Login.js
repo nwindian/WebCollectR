@@ -4,7 +4,9 @@ import '../index.css';
 import { Link, withRouter, Router } from 'react-router-dom'
 
 class Login extends React.Component{
-
+    constructor(props){
+        super(props);
+    }
     render() {
 
         return (
@@ -25,12 +27,12 @@ class Login extends React.Component{
                 <div>
                     <form id="loginform">
                         <label id="loginregistertext">Email</label>
-                        <input type="text" id="logintextbox" />
+                        <input type="text" id="logintextbox" onChange={e => this.props.setEmail(e)} />
 
                         <label id="loginregistertext">Password</label>
-                        <input type="Password" id="logintextbox" />
+                        <input type="Password" id="logintextbox" onChange={e => this.props.setPass(e)} />
 
-                        <button id="button">Login </button>
+                        <button type="button" id="button" onClick={() => this.props.handleLogin()}>Login</button>
                     </form>
                 </div>
             </div>
