@@ -25,7 +25,7 @@ class App extends React.Component {
 	}
 
 
-	handleLogin = () => {
+	async handleLogin(){
 
 		//alert("HIII");
 		if(this.state.email == "" || this.state.password == "") {
@@ -41,20 +41,23 @@ class App extends React.Component {
 			};
 
 			var userId = 0;
-			axios
+			await axios
 				.post('http://localhost:9000/api/getUserLogin', user)
 				.then(function (response){
 					console.log(response);
 					userId = response.data.userId;
-					alert(response.data.userId);
-					if(userId != 0){
-						this.state.validUser = true;
-					}
+					//alert(userId);
 				})
 				.catch(err => {
 					console.log(err.response);
 				});
+			if(userId != 0){
+				alert("YES");
+				this.state.validUser = true;
+			}
 			alert(this.state.validUser);
+			alert(userId);
+
 
 		}
 	}
