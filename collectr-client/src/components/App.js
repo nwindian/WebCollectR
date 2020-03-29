@@ -15,7 +15,7 @@ class App extends React.Component {
 		this.state = { apiResponse: "",
 		  email: "",
 		  password: "",
-		  loginPressed: false
+		  validUser: false
 		};
 		this.setEmail = this.setEmail.bind(this);
 		this.setPass = this.setPass.bind(this);
@@ -27,21 +27,40 @@ class App extends React.Component {
 
 	handleLogin = () => {
 
-		alert(this.state.email);
-		if(this.state.email != "" && this.state.password != ""){
-			this.state.loginPressed = true;
-		}
 		//alert("HIII");
-		if((this.state.email == "" || this.state.password == "") && this.state.loginPressed == true) {
+		if(this.state.email == "" || this.state.password == "") {
 			alert("Please complete form.");
 		}
-		else if (this.state.email != "" && this.state.password != "" && this.state.loginPressed == true){
-			alert("login boy");
+		else{
+			
+			const{email, password} = this.state;
+
+			const user = {
+				email,
+				password,
+			};
+
+			var userId = 0;
+			axios
+				.post('http://localhost:9000/api/getUserLogin', user)
+				.then(function (response){
+					console.log(response);
+					userId = response.data.userId;
+					alert(response.data.userId);
+					if(userId != 0){
+						this.state.validUser = true;
+					}
+				})
+				.catch(err => {
+					console.log(err.response);
+				});
+			alert(this.state.validUser);
+
 		}
 	}
 
 	//Call api to insert into db
-	handleRegister = (e) => {
+	handleRegister = () => {
 
 		if(this.state.email != "" && this.state.password != ""){
 
@@ -63,6 +82,10 @@ class App extends React.Component {
 				.catch(err => {
 					console.log(err.response);
 				});
+		}
+		else
+		{
+			alert("Please complete form.");
 		}
 	}
 

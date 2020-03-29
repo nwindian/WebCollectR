@@ -18,6 +18,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var testAPIRouter = require('./routes/testAPI');
 var registerUserRouter = require('./routes/registerUser');
+var getUserLoginRouter = require('./routes/getUserLogin');
 
 
 //Connection to db
@@ -42,6 +43,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/users', usersRouter);
 app.use("/testAPI", testAPIRouter);
 app.use("/api/registerUser", registerUserRouter);
+app.use("/api/getUserLogin", getUserLoginRouter);
 app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
