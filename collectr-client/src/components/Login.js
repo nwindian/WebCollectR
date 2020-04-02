@@ -31,8 +31,9 @@ class Login extends React.Component{
 
                         <label id="loginregistertext">Password</label>
                         <input type="Password" id="logintextbox" onChange={e => this.props.setPass(e)} />
-
-                        <button type="button" id="button" onClick={() => this.props.handleLogin()}>Login</button>
+                        <Link to="/HomePage">
+                            <button type="button" id="button" onClick={() => this.props.handleLogin()}>Login</button>
+                        </Link>
                     </form>
                 </div>
             </div>
