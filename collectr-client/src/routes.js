@@ -28,16 +28,16 @@ import PrivateRoute from './privateRoutes.js';
       </Route>
 
  		  <Route path='/Register'>
-        <Register setPass = {props.setPass} setEmail = {props.setEmail} handleRegister = {props.handleRegister} />
+        <Register authToken = {props.authToken} setPass = {props.setPass} setEmail = {props.setEmail} handleRegister = {props.handleRegister} />
       </Route>
 
       <PrivateRoute authToken={props.authToken} path='/HomePage'>
-        <HomePage authToken={props.authToken}/>
+        <HomePage authToken={props.authToken} email = {props.email}/>
       </PrivateRoute>
 
 
       <Route path='/'> 
-        <Login setPass = {props.setPass} setEmail = {props.setEmail} handleLogin = {props.handleLogin}  />
+        <Login authToken = {props.authToken} setPass = {props.setPass} setEmail = {props.setEmail} handleLogin = {props.handleLogin}  />
       </Route> 
 
  		</Switch>
