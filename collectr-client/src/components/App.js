@@ -61,7 +61,7 @@ class App extends React.Component {
 				.then(function (response){
 					console.log(response);
 					userId = response.data.userId;
-					alert(userId);
+					//alert(userId);
 				})
 				.catch(err => {
 					console.log(err.response);
@@ -75,7 +75,7 @@ class App extends React.Component {
 			if(this.state.validUser){
 				window.localStorage.setItem('auth', true);
 				this.state.authToken = true;
-				alert("valid");
+				//alert("valid");
 				//return <Redirect to="/HomePage/"/>;
 			}
 			else{
@@ -168,6 +168,7 @@ function GettingData(props) {
 	if(!isGettingData){
 		//alert(isGettingData)
 		//alert(isGettingData)
+		//return <HomePage/>
 		return <Routes  password = {props.password} email = {props.email} setPass = {props.setPass} setEmail = {props.setEmail} handleRegister = {props.handleRegister} handleLogin = {props.handleLogin} authToken = {props.authToken}/>
 	}
 	return (
