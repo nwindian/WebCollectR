@@ -20,6 +20,7 @@ var testAPIRouter = require('./routes/testAPI');
 var registerUserRouter = require('./routes/registerUser');
 var getUserLoginRouter = require('./routes/getUserLogin');
 var getOpenLibrarySearch = require('./routes/getOpenLibrarySearch');
+var getBooksFromIsbn = require('./routes/getBooksFromIsbn');
 
 
 //Connection to db
@@ -46,6 +47,7 @@ app.use("/testAPI", testAPIRouter);
 app.use("/api/registerUser", registerUserRouter);
 app.use("/api/getUserLogin", getUserLoginRouter);
 app.use("/api/getOpenLibrarySearch", getOpenLibrarySearch);
+app.use("/api/getBooksFromIsbn", getBooksFromIsbn);
 app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
