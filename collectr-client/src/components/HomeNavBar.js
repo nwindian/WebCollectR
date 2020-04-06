@@ -8,8 +8,8 @@ class HomeNavBar extends React.Component{
     	if(this.props.authToken)
     	{
     		return (
-    			<div class = "topnav">
-                	<button class="HomeButton" id="b" href="#home">CollectR</button>
+    			<div className = "topnav">
+                	<button className="HomeButton" id="b" href="#home">CollectR</button>
                 	<button id="a" href="#SignUp">{this.props.email}</button>
             	</div>
     		)
@@ -17,7 +17,7 @@ class HomeNavBar extends React.Component{
     	else{
 	        return (
 	            <div class = "topnav">
-	                <button class="HomeButton" id="b" href="#home">Collectr</button>
+	                <button className="HomeButton" id="b" href="#home">Collectr</button>
 	                <button id="a" href="#SignUp">SignUp</button>
 	                <button id="a" href="#Login">Login</button>
 	            </div>

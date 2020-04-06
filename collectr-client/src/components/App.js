@@ -9,6 +9,7 @@ import axios from 'axios';
 import qs from 'qs';
 import HomePage from './HomePage.js';
 import {Redirect} from 'react-router-dom';
+import Loading from './Loading.js'
 
 class App extends React.Component {
 
@@ -168,11 +169,11 @@ function GettingData(props) {
 	if(!isGettingData){
 		//alert(isGettingData)
 		//alert(isGettingData)
-		//return <HomePage/>
+		//return <Loading/>
 		return <Routes  password = {props.password} email = {props.email} setPass = {props.setPass} setEmail = {props.setEmail} handleRegister = {props.handleRegister} handleLogin = {props.handleLogin} authToken = {props.authToken}/>
 	}
 	return (
-		<p>Loading......</p>
+		<Loading />
 	);
 	
 }
