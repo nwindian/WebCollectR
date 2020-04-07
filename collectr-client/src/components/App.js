@@ -10,6 +10,8 @@ import qs from 'qs';
 import HomePage from './HomePage.js';
 import {Redirect} from 'react-router-dom';
 import Loading from './Loading.js'
+import BooksLayout from './BooksLayout.js';
+import BookResultsPage from './BookResultsPage.js'
 
 class App extends React.Component {
 
@@ -19,12 +21,15 @@ class App extends React.Component {
 		  email: "",
 		  password: "",
 		  authToken: false,
-		  isGettingRequest: false
+		  isGettingRequest: false,
+		  bookSearchResults: []
 		};
 		this.setEmail = this.setEmail.bind(this);
 		this.setPass = this.setPass.bind(this);
 		this.handleRegister = this.handleRegister.bind(this);
 		this.handleLogin = this.handleLogin.bind(this);
+		this.setBookSearchResults = this.setBookSearchResults.bind(this);
+		this.setLoading = this.setLoading.bind(this);
 		axios.defaults.withCredentials = true;
 	}
 
@@ -134,11 +139,27 @@ class App extends React.Component {
 		})
 	}
 
+	setBookSearchResults = (e) => {
+		//e.preventDefault();
+			this.setState({
+				bookSearchResults: e
+			},
+				function(){console.log("setState completed", this.state)}
+			)
+			alert("App.js: " + this.state.bookSearchResults)
+	}
+
 	//set Password state
 	setPass = (e) => {
 		e.preventDefault();
 		this.setState({
 			password: e.target.value
+		})
+	}
+
+	setLoading = (e) => {
+		this.setState({
+			isGettingRequest: e
 		})
 	}
 
@@ -157,7 +178,7 @@ class App extends React.Component {
     render() {
         return (
             <div className="HomeNavBar">
-                <GettingData  password = {this.state.password} email = {this.state.email} setPass = {this.setPass} setEmail = {this.setEmail} handleRegister = {this.handleRegister} handleLogin = {this.handleLogin} authToken = {this.state.authToken} isGettingRequest = {this.state.isGettingRequest}/>
+                <GettingData  password = {this.state.password} email = {this.state.email} setPass = {this.setPass} setEmail = {this.setEmail} handleRegister = {this.handleRegister} handleLogin = {this.handleLogin} authToken = {this.state.authToken} isGettingRequest = {this.state.isGettingRequest} setBookSearchResults = {this.setBookSearchResults} setLoading = {this.setLoading} bookSearchResults = {this.state.bookSearchResults}/>
                 <p className="App-intro">{this.state.apiResponse}</p>      
             </div>   
         );
@@ -170,7 +191,9 @@ function GettingData(props) {
 		//alert(isGettingData)
 		//alert(isGettingData)
 		//return <Loading/>
-		return <Routes  password = {props.password} email = {props.email} setPass = {props.setPass} setEmail = {props.setEmail} handleRegister = {props.handleRegister} handleLogin = {props.handleLogin} authToken = {props.authToken}/>
+		//return <BookResultsPage />
+		//return <BooksLayout />
+		return <Routes  password = {props.password} email = {props.email} setPass = {props.setPass} setEmail = {props.setEmail} handleRegister = {props.handleRegister} handleLogin = {props.handleLogin} authToken = {props.authToken} setBookSearchResults = {props.setBookSearchResults} setLoading = {props.setLoading} bookSearchResults = {props.bookSearchResults}/>
 	}
 	return (
 		<Loading />

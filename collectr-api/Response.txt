@@ -2854,61 +2854,6 @@
    "ebook_count_i": 0
   },
   {
-   "title_suggest": "Lords of the Ring",
-   "publisher": [
-    "Pulse"
-   ],
-   "id_librarything": [
-    "5808468"
-   ],
-   "isbn": [
-    "092101404X",
-    "9780921014041"
-   ],
-   "has_fulltext": false,
-   "language": [
-    "eng"
-   ],
-   "edition_count": 1,
-   "edition_key": [
-    "OL11445939M"
-   ],
-   "last_modified_i": 1583832222,
-   "title": "Lords of the Ring",
-   "author_name": [
-    "Bruce Blackadar"
-   ],
-   "seed": [
-    "/books/OL11445939M",
-    "/works/OL20652017W",
-    "/authors/OL232901A"
-   ],
-   "first_publish_year": 1987,
-   "publish_year": [
-    1987
-   ],
-   "key": "/works/OL20652017W",
-   "text": [
-    "OL11445939M",
-    "092101404X",
-    "9780921014041",
-    "Bruce Blackadar",
-    "OL232901A",
-    "Wrestling Stars",
-    "Lords of the Ring",
-    "/works/OL20652017W",
-    "Pulse"
-   ],
-   "publish_date": [
-    "1987"
-   ],
-   "author_key": [
-    "OL232901A"
-   ],
-   "type": "work",
-   "ebook_count_i": 0
-  },
-  {
    "title_suggest": "Lord of the Rings",
    "publisher": [
     "Scribd.com"
@@ -3113,6 +3058,61 @@
     1995
    ],
    "first_publish_year": 1995
+  },
+  {
+   "title_suggest": "Lords of the Ring",
+   "publisher": [
+    "Pulse"
+   ],
+   "id_librarything": [
+    "5808468"
+   ],
+   "isbn": [
+    "092101404X",
+    "9780921014041"
+   ],
+   "has_fulltext": false,
+   "language": [
+    "eng"
+   ],
+   "edition_count": 1,
+   "edition_key": [
+    "OL11445939M"
+   ],
+   "last_modified_i": 1583832222,
+   "title": "Lords of the Ring",
+   "author_name": [
+    "Bruce Blackadar"
+   ],
+   "seed": [
+    "/books/OL11445939M",
+    "/works/OL20652017W",
+    "/authors/OL232901A"
+   ],
+   "first_publish_year": 1987,
+   "publish_year": [
+    1987
+   ],
+   "key": "/works/OL20652017W",
+   "text": [
+    "OL11445939M",
+    "092101404X",
+    "9780921014041",
+    "Bruce Blackadar",
+    "OL232901A",
+    "Wrestling Stars",
+    "Lords of the Ring",
+    "/works/OL20652017W",
+    "Pulse"
+   ],
+   "publish_date": [
+    "1987"
+   ],
+   "author_key": [
+    "OL232901A"
+   ],
+   "type": "work",
+   "ebook_count_i": 0
   },
   {
    "title_suggest": "Lord of the Rings",
@@ -5539,218 +5539,6 @@
   {
    "title_suggest": "The Lord of the Rings",
    "edition_key": [
-    "OL8821524M"
-   ],
-   "cover_i": 4853661,
-   "isbn": [
-    "9781586637903",
-    "1586637908"
-   ],
-   "has_fulltext": false,
-   "text": [
-    "OL8821524M",
-    "9781586637903",
-    "1586637908",
-    "Patrick Gardner",
-    "OL6916799A",
-    "The Lord of the Rings",
-    "/works/OL14933438W",
-    "SparkNotes",
-    "The Lord of the Rings (Spark Notes)"
-   ],
-   "author_name": [
-    "Patrick Gardner"
-   ],
-   "seed": [
-    "/books/OL8821524M",
-    "/works/OL14933438W",
-    "/authors/OL6916799A"
-   ],
-   "author_key": [
-    "OL6916799A"
-   ],
-   "title": "The Lord of the Rings",
-   "publish_date": [
-    "September 1, 2002"
-   ],
-   "type": "work",
-   "ebook_count_i": 0,
-   "edition_count": 1,
-   "key": "/works/OL14933438W",
-   "id_goodreads": [
-    "54698"
-   ],
-   "publisher": [
-    "SparkNotes"
-   ],
-   "language": [
-    "eng"
-   ],
-   "last_modified_i": 1547622765,
-   "id_librarything": [
-    "8204903"
-   ],
-   "cover_edition_key": "OL8821524M",
-   "publish_year": [
-    2002
-   ],
-   "first_publish_year": 2002
-  },
-  {
-   "title_suggest": "The Lord of the Rings",
-   "publisher": [
-    "Insights"
-   ],
-   "cover_i": 8986062,
-   "id_amazon": [
-    "160887382X"
-   ],
-   "isbn": [
-    "9781608873821",
-    "160887382X"
-   ],
-   "has_fulltext": false,
-   "title": "The Lord of the Rings",
-   "edition_key": [
-    "OL27530098M"
-   ],
-   "last_modified_i": 1571725038,
-   "edition_count": 1,
-   "author_name": [
-    "New Line Cinema"
-   ],
-   "cover_edition_key": "OL27530098M",
-   "seed": [
-    "/books/OL27530098M",
-    "/works/OL20324134W",
-    "/authors/OL3207285A"
-   ],
-   "first_publish_year": 2014,
-   "publish_year": [
-    2014
-   ],
-   "key": "/works/OL20324134W",
-   "text": [
-    "OL27530098M",
-    "9781608873821",
-    "160887382X",
-    "New Line Cinema",
-    "OL3207285A",
-    "The Definitive Movie Posters",
-    "The Lord of the Rings",
-    "/works/OL20324134W",
-    "Insights"
-   ],
-   "publish_date": [
-    "Jul 15, 2014"
-   ],
-   "author_key": [
-    "OL3207285A"
-   ],
-   "type": "work",
-   "ebook_count_i": 0
-  },
-  {
-   "title_suggest": "The Lord of the Rings",
-   "publisher": [
-    "Cryptozoic Entertainment"
-   ],
-   "cover_i": 8938516,
-   "id_amazon": [
-    "1617682845"
-   ],
-   "isbn": [
-    "1617682845",
-    "9781617682841"
-   ],
-   "has_fulltext": false,
-   "title": "The Lord of the Rings",
-   "edition_key": [
-    "OL27480432M"
-   ],
-   "last_modified_i": 1571288397,
-   "edition_count": 1,
-   "cover_edition_key": "OL27480432M",
-   "seed": [
-    "/books/OL27480432M",
-    "/works/OL20280520W"
-   ],
-   "first_publish_year": 2013,
-   "publish_year": [
-    2013
-   ],
-   "key": "/works/OL20280520W",
-   "text": [
-    "OL27480432M",
-    "1617682845",
-    "9781617682841",
-    "The Two Towers Deck-Building Game",
-    "The Lord of the Rings",
-    "/works/OL20280520W",
-    "Cryptozoic Entertainment"
-   ],
-   "publish_date": [
-    "Aug 01, 2013"
-   ],
-   "type": "work",
-   "ebook_count_i": 0
-  },
-  {
-   "title_suggest": "The Rings Of The Lords",
-   "publisher": [
-    "Independently published"
-   ],
-   "cover_i": 8846255,
-   "id_amazon": [
-    "1520881339"
-   ],
-   "isbn": [
-    "9781520881331",
-    "1520881339"
-   ],
-   "has_fulltext": false,
-   "title": "The Rings Of The Lords",
-   "edition_key": [
-    "OL27383384M"
-   ],
-   "last_modified_i": 1570534372,
-   "edition_count": 1,
-   "author_name": [
-    "Liam Simon Blades"
-   ],
-   "cover_edition_key": "OL27383384M",
-   "seed": [
-    "/books/OL27383384M",
-    "/works/OL20196494W",
-    "/authors/OL7653351A"
-   ],
-   "first_publish_year": 2017,
-   "publish_year": [
-    2017
-   ],
-   "key": "/works/OL20196494W",
-   "text": [
-    "OL27383384M",
-    "9781520881331",
-    "1520881339",
-    "Liam Simon Blades",
-    "OL7653351A",
-    "The Rings Of The Lords",
-    "/works/OL20196494W",
-    "Independently published"
-   ],
-   "publish_date": [
-    "Apr 20, 2017"
-   ],
-   "author_key": [
-    "OL7653351A"
-   ],
-   "type": "work",
-   "ebook_count_i": 0
-  },
-  {
-   "title_suggest": "The Lord of the Rings",
-   "edition_key": [
     "OL8018301M"
    ],
    "cover_i": 8167603,
@@ -6019,6 +5807,218 @@
    "publish_date": [
     "September 30, 2003"
    ]
+  },
+  {
+   "title_suggest": "The Lord of the Rings",
+   "edition_key": [
+    "OL8821524M"
+   ],
+   "cover_i": 4853661,
+   "isbn": [
+    "9781586637903",
+    "1586637908"
+   ],
+   "has_fulltext": false,
+   "text": [
+    "OL8821524M",
+    "9781586637903",
+    "1586637908",
+    "Patrick Gardner",
+    "OL6916799A",
+    "The Lord of the Rings",
+    "/works/OL14933438W",
+    "SparkNotes",
+    "The Lord of the Rings (Spark Notes)"
+   ],
+   "author_name": [
+    "Patrick Gardner"
+   ],
+   "seed": [
+    "/books/OL8821524M",
+    "/works/OL14933438W",
+    "/authors/OL6916799A"
+   ],
+   "author_key": [
+    "OL6916799A"
+   ],
+   "title": "The Lord of the Rings",
+   "publish_date": [
+    "September 1, 2002"
+   ],
+   "type": "work",
+   "ebook_count_i": 0,
+   "edition_count": 1,
+   "key": "/works/OL14933438W",
+   "id_goodreads": [
+    "54698"
+   ],
+   "publisher": [
+    "SparkNotes"
+   ],
+   "language": [
+    "eng"
+   ],
+   "last_modified_i": 1547622765,
+   "id_librarything": [
+    "8204903"
+   ],
+   "cover_edition_key": "OL8821524M",
+   "publish_year": [
+    2002
+   ],
+   "first_publish_year": 2002
+  },
+  {
+   "title_suggest": "The Lord of the Rings",
+   "publisher": [
+    "Insights"
+   ],
+   "cover_i": 8986062,
+   "id_amazon": [
+    "160887382X"
+   ],
+   "isbn": [
+    "9781608873821",
+    "160887382X"
+   ],
+   "has_fulltext": false,
+   "title": "The Lord of the Rings",
+   "edition_key": [
+    "OL27530098M"
+   ],
+   "last_modified_i": 1571725038,
+   "edition_count": 1,
+   "author_name": [
+    "New Line Cinema"
+   ],
+   "cover_edition_key": "OL27530098M",
+   "seed": [
+    "/books/OL27530098M",
+    "/works/OL20324134W",
+    "/authors/OL3207285A"
+   ],
+   "first_publish_year": 2014,
+   "publish_year": [
+    2014
+   ],
+   "key": "/works/OL20324134W",
+   "text": [
+    "OL27530098M",
+    "9781608873821",
+    "160887382X",
+    "New Line Cinema",
+    "OL3207285A",
+    "The Definitive Movie Posters",
+    "The Lord of the Rings",
+    "/works/OL20324134W",
+    "Insights"
+   ],
+   "publish_date": [
+    "Jul 15, 2014"
+   ],
+   "author_key": [
+    "OL3207285A"
+   ],
+   "type": "work",
+   "ebook_count_i": 0
+  },
+  {
+   "title_suggest": "The Lord of the Rings",
+   "publisher": [
+    "Cryptozoic Entertainment"
+   ],
+   "cover_i": 8938516,
+   "id_amazon": [
+    "1617682845"
+   ],
+   "isbn": [
+    "1617682845",
+    "9781617682841"
+   ],
+   "has_fulltext": false,
+   "title": "The Lord of the Rings",
+   "edition_key": [
+    "OL27480432M"
+   ],
+   "last_modified_i": 1571288397,
+   "edition_count": 1,
+   "cover_edition_key": "OL27480432M",
+   "seed": [
+    "/books/OL27480432M",
+    "/works/OL20280520W"
+   ],
+   "first_publish_year": 2013,
+   "publish_year": [
+    2013
+   ],
+   "key": "/works/OL20280520W",
+   "text": [
+    "OL27480432M",
+    "1617682845",
+    "9781617682841",
+    "The Two Towers Deck-Building Game",
+    "The Lord of the Rings",
+    "/works/OL20280520W",
+    "Cryptozoic Entertainment"
+   ],
+   "publish_date": [
+    "Aug 01, 2013"
+   ],
+   "type": "work",
+   "ebook_count_i": 0
+  },
+  {
+   "title_suggest": "The Rings Of The Lords",
+   "publisher": [
+    "Independently published"
+   ],
+   "cover_i": 8846255,
+   "id_amazon": [
+    "1520881339"
+   ],
+   "isbn": [
+    "9781520881331",
+    "1520881339"
+   ],
+   "has_fulltext": false,
+   "title": "The Rings Of The Lords",
+   "edition_key": [
+    "OL27383384M"
+   ],
+   "last_modified_i": 1570534372,
+   "edition_count": 1,
+   "author_name": [
+    "Liam Simon Blades"
+   ],
+   "cover_edition_key": "OL27383384M",
+   "seed": [
+    "/books/OL27383384M",
+    "/works/OL20196494W",
+    "/authors/OL7653351A"
+   ],
+   "first_publish_year": 2017,
+   "publish_year": [
+    2017
+   ],
+   "key": "/works/OL20196494W",
+   "text": [
+    "OL27383384M",
+    "9781520881331",
+    "1520881339",
+    "Liam Simon Blades",
+    "OL7653351A",
+    "The Rings Of The Lords",
+    "/works/OL20196494W",
+    "Independently published"
+   ],
+   "publish_date": [
+    "Apr 20, 2017"
+   ],
+   "author_key": [
+    "OL7653351A"
+   ],
+   "type": "work",
+   "ebook_count_i": 0
   },
   {
    "title_suggest": "The Lord of the rings",

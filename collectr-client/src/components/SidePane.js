@@ -30,7 +30,7 @@ class SidePane extends Component {
                 width='300px'
                 onRequestClose={ () => this.setState({ isPaneOpenLeft: false }) }
                 onRequestOpen={ () => this.setState({isPaneOpenLeft:true })}>
-                <div><SidePaneSearch changeBookName={this.props.changeBookName} handleSearch={this.props.handleSearch}/></div>
+                <div><SidePaneSearch changeBookName={this.props.changeBookName} getBooks={this.props.getBooks}/></div>
             </SlidingPane>
         </div>;
     	}

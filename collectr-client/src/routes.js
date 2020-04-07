@@ -8,6 +8,7 @@ import App from './components/App';
 import Login from './components/Login.js';
 import Register from './components/Register.js';
 import HomePage from './components/HomePage.js';
+import BookResultsPage from './components/BookResultsPage.js';
 import PrivateRoute from './privateRoutes.js';
 
 /**
@@ -15,10 +16,6 @@ import PrivateRoute from './privateRoutes.js';
  * Don't forget to import the components above after adding new route.
  */
  export default function Routes(props) {
-
-  function _renderLoader() {
-    alert(props.isGettingRequest);
-  }
 
  	return (
         <div>
@@ -32,7 +29,11 @@ import PrivateRoute from './privateRoutes.js';
       </Route>
 
       <PrivateRoute authToken={props.authToken} path='/HomePage'>
-        <HomePage authToken={props.authToken} email = {props.email}/>
+        <HomePage authToken={props.authToken} email = {props.email} setBookSearchResults = {props.setBookSearchResults} setLoading = {props.setLoading} bookSearchResults = {props.bookSearchResults}/>
+      </PrivateRoute>
+
+      <PrivateRoute authToken={props.authToken} path='/SearchResults'>
+        <BookResultsPage authToken={props.authToken} setBookSearchResults = {props.setBookSearchResults} bookSearchResults = {props.bookSearchResults}/>
       </PrivateRoute>
 
 
