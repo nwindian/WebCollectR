@@ -88,7 +88,7 @@ class BooksLayout extends React.Component{
 
 		<div>
 		  <HomeNavBar />
-		  <SidePane />
+		  <SidePane getBooks = {this.props.getBooks} />
 	      <GridLayout className="layout" layout={layouts} cols={12} rowHeight={30} width={1200}>
 
 	      	{ 

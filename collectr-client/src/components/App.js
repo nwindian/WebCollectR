@@ -30,6 +30,9 @@ class App extends React.Component {
 		this.handleLogin = this.handleLogin.bind(this);
 		this.setBookSearchResults = this.setBookSearchResults.bind(this);
 		this.setLoading = this.setLoading.bind(this);
+		this.getBooks = this.getBooks.bind(this);
+		this.getBooksFromIsbn = this.getBooksFromIsbn.bind(this);
+		this.handleSearch = this.handleSearch.bind(this);
 		axios.defaults.withCredentials = true;
 	}
 
@@ -175,10 +178,80 @@ class App extends React.Component {
 		//this.handleLogin();
 	}
 
+	async getBooksFromIsbn(isbns){
+
+		var books = [];
+
+		await axios
+			.get('http://localhost:9000/api/getBooksFromIsbn',
+			{
+				params: {
+					books: JSON.stringify(isbns)
+				}
+			})
+			.then(res =>
+			{
+				console.log(res.data);
+				books = res.data;
+				//return res.data;
+
+			})
+			.catch(error => {
+				console.log(error.response);
+			});
+
+			//alert("BOOKS: " + books);
+			return books;
+	}
+
+
+	async getBooks(){
+
+
+		this.setLoading(true);
+
+		var bookResults = await this.handleSearch();
+		var books = await this.getBooksFromIsbn(bookResults);
+
+		this.setLoading(false);
+		// alert("getBooks: " + books);
+		this.setBookSearchResults(books);
+	}
+
+
+	async handleSearch(){
+
+		var bookResults = [];
+
+		var url = 'http://localhost:9000/api/getOpenLibrarySearch';
+
+		await axios
+		.get(url,
+		{
+			params: {
+				bookSearch: this.state.bookSearch
+			}
+		})
+		.then(res =>
+		{
+			//this.setState({bookSearchResults: res.data});
+
+			for(var i=0; i < res.data.docs[i].isbn.length; i++){
+				bookResults = bookResults.concat(res.data.docs[i].isbn);
+			}
+			console.log(bookResults);
+		})
+		.catch(error => {
+			console.log(error.response);
+		});
+
+		return bookResults;
+	}
+
     render() {
         return (
             <div className="HomeNavBar">
-                <GettingData  password = {this.state.password} email = {this.state.email} setPass = {this.setPass} setEmail = {this.setEmail} handleRegister = {this.handleRegister} handleLogin = {this.handleLogin} authToken = {this.state.authToken} isGettingRequest = {this.state.isGettingRequest} setBookSearchResults = {this.setBookSearchResults} setLoading = {this.setLoading} bookSearchResults = {this.state.bookSearchResults}/>
+                <GettingData  password = {this.state.password} email = {this.state.email} setPass = {this.setPass} setEmail = {this.setEmail} handleRegister = {this.handleRegister} handleLogin = {this.handleLogin} authToken = {this.state.authToken} isGettingRequest = {this.state.isGettingRequest} setBookSearchResults = {this.setBookSearchResults} setLoading = {this.setLoading} bookSearchResults = {this.state.bookSearchResults} getBooks = {this.getBooks}/>
                 <p className="App-intro">{this.state.apiResponse}</p>      
             </div>   
         );
@@ -193,7 +266,7 @@ function GettingData(props) {
 		//return <Loading/>
 		//return <BookResultsPage />
 		//return <BooksLayout />
-		return <Routes  password = {props.password} email = {props.email} setPass = {props.setPass} setEmail = {props.setEmail} handleRegister = {props.handleRegister} handleLogin = {props.handleLogin} authToken = {props.authToken} setBookSearchResults = {props.setBookSearchResults} setLoading = {props.setLoading} bookSearchResults = {props.bookSearchResults}/>
+		return <Routes  password = {props.password} email = {props.email} setPass = {props.setPass} setEmail = {props.setEmail} handleRegister = {props.handleRegister} handleLogin = {props.handleLogin} authToken = {props.authToken} setBookSearchResults = {props.setBookSearchResults} setLoading = {props.setLoading} bookSearchResults = {props.bookSearchResults} getBooks = {props.getBooks}/>
 	}
 	return (
 		<Loading />

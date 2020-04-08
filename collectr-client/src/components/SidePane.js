@@ -37,7 +37,7 @@ class SidePane extends Component {
     	else{
     		return (
     			<div>
-    			<div><SidePaneSearch /> </div>
+    			<div><SidePaneSearch changeBookName={this.props.changeBookName} getBooks={this.props.getBooks} /> </div>
     			<div className="arrow" onClick={() => this.setState({ isPaneOpenLeft: true })} />
     			</div>
     		)
