@@ -24,12 +24,6 @@ class HomePage extends React.Component {
 		axios.defaults.withCredentials = true;
 	}
 
-	changeBookName = (e) => {
-
-		var bookName = e.target.value;
-		bookName = bookName.split(' ').join('+');
-		this.setState({bookSearch: bookName})
-	}
 
 
 	render(){
@@ -38,7 +32,7 @@ class HomePage extends React.Component {
 			return(
 				<div>
 					<HomeNavBar authToken = {this.props.authToken} email = {this.props.email} />
-					<SidePane changeBookName = {this.changeBookName} getBooks = {this.props.getBooks} />
+					<SidePane changeBookName = {this.props.changeBookName} getBooks = {this.props.getBooks} />
 				</div>
 			)			
 		}

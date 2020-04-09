@@ -26,7 +26,7 @@ class SidePaneSearch extends React.Component {
 			</div>
 		)
 	}
-	//ReactDOM.render(<MetisMenu />, document.getElementById('dom_id'));
+
 }
 
 export default SidePaneSearch;

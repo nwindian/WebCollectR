@@ -8,7 +8,7 @@ class BookResultsPage extends React.Component {
 
 	render(){
 		return(
-			<div> <BooksLayout bookSearchResults ={this.props.bookSearchResults} getBooks = {this.props.getBooks}/> </div>
+			<div> <BooksLayout bookSearchResults ={this.props.bookSearchResults} getBooks = {this.props.getBooks} isbns = {this.props.isbns} getParsedImgUrl = {this.props.getParsedImgUrl}/> </div>
 		)
 	}
 	//ReactDOM.render(<MetisMenu />, document.getElementById('dom_id'));

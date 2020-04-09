@@ -29,11 +29,11 @@ import PrivateRoute from './privateRoutes.js';
       </Route>
 
       <PrivateRoute authToken={props.authToken} path='/HomePage'>
-        <HomePage authToken={props.authToken} email = {props.email} setBookSearchResults = {props.setBookSearchResults} setLoading = {props.setLoading} bookSearchResults = {props.bookSearchResults} getBooks = {props.getBooks}/>
+        <HomePage authToken={props.authToken} email = {props.email} setBookSearchResults = {props.setBookSearchResults} setLoading = {props.setLoading} bookSearchResults = {props.bookSearchResults} getBooks = {props.getBooks} isbns = {props.isbns} getParsedImgUrl = {props.getParsedImgUrl} changeBookName = {props.changeBookName}/>
       </PrivateRoute>
 
       <PrivateRoute authToken={props.authToken} path='/SearchResults'>
-        <BookResultsPage authToken={props.authToken} setBookSearchResults = {props.setBookSearchResults} bookSearchResults = {props.bookSearchResults} getBooks = {props.getBooks}/>
+        <BookResultsPage authToken={props.authToken} setBookSearchResults = {props.setBookSearchResults} bookSearchResults = {props.bookSearchResults} getBooks = {props.getBooks} isbns = {props.isbns} getParsedImgUrl = {props.getParsedImgUrl} changeBookName = {props.changeBookName}/>
       </PrivateRoute>
 
 

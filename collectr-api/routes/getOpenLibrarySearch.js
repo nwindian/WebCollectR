@@ -11,6 +11,10 @@ router.get('/', cors(options), function(req, res, next) {
 
 	var bookSearch = req.query.bookSearch;
 	const url = 'http://openlibrary.org/search.json?q=' + bookSearch;
+	fs.writeFile('Response.txt',bookSearch, (err)=>{
+		if(err) throw err;
+	});
+
 	console.log(url);
 	// axios
 	// .get(url)
@@ -29,9 +33,6 @@ router.get('/', cors(options), function(req, res, next) {
 		}
 		else
 		{
-			fs.writeFile('Response.txt',content, (err)=>{
-				if(err) throw err;
-			});
 			res.send(content);		
 		}
 

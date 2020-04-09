@@ -2,7 +2,7 @@
   width: 3vmin;
   height: 3vmin;
   box-sizing: border-box;
-  position: absolute;
+  position: fixed;
   left: 5%;
   top: 10%;
   transform: rotate(45deg);

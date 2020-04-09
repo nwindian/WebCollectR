@@ -22,7 +22,9 @@ class App extends React.Component {
 		  password: "",
 		  authToken: false,
 		  isGettingRequest: false,
-		  bookSearchResults: []
+		  bookSearchResults: [],
+		  isbns: [],
+		  bookSearch: ""
 		};
 		this.setEmail = this.setEmail.bind(this);
 		this.setPass = this.setPass.bind(this);
@@ -33,13 +35,22 @@ class App extends React.Component {
 		this.getBooks = this.getBooks.bind(this);
 		this.getBooksFromIsbn = this.getBooksFromIsbn.bind(this);
 		this.handleSearch = this.handleSearch.bind(this);
+		this.getParsedImgUrl = this.getParsedImgUrl.bind(this);
+		this.changeBookName = this.changeBookName.bind(this);
 		axios.defaults.withCredentials = true;
+	}
+
+	changeBookName = (e) => {
+
+		var bookName = e.target.value;
+		bookName = bookName.split(' ').join('+');
+		this.setState({bookSearch: bookName})
 	}
 
 
 	async handleLogin(){
 
-		//alert("HIII");
+
 		if(this.state.email == "" || this.state.password == "") {
 			this.setState({
 				authToken: false
@@ -70,7 +81,7 @@ class App extends React.Component {
 				.then(function (response){
 					console.log(response);
 					userId = response.data.userId;
-					//alert(userId);
+
 				})
 				.catch(err => {
 					console.log(err.response);
@@ -78,14 +89,12 @@ class App extends React.Component {
 			if(userId != 0){
 				this.state.validUser = true;
 			}
-			//alert(this.state.validUser);
-			//alert(userId);
+
 
 			if(this.state.validUser){
 				window.localStorage.setItem('auth', true);
 				this.state.authToken = true;
-				//alert("valid");
-				//return <Redirect to="/HomePage/"/>;
+
 			}
 			else{
 
@@ -115,7 +124,6 @@ class App extends React.Component {
 				email,
 				password,
 			};
-			//alert(user.email);
 
 			axios.defaults.withCredentials = true;
 			axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
@@ -149,7 +157,6 @@ class App extends React.Component {
 			},
 				function(){console.log("setState completed", this.state)}
 			)
-			alert("App.js: " + this.state.bookSearchResults)
 	}
 
 	//set Password state
@@ -200,7 +207,6 @@ class App extends React.Component {
 				console.log(error.response);
 			});
 
-			//alert("BOOKS: " + books);
 			return books;
 	}
 
@@ -213,9 +219,99 @@ class App extends React.Component {
 		var bookResults = await this.handleSearch();
 		var books = await this.getBooksFromIsbn(bookResults);
 
+		var copy = []
+		for(var i = 0; i < bookResults.length; i++){
+			copy.push('ISBN:' + bookResults[i]);
+		}
+
+		console.log(bookResults)
+		this.setState({
+			isbns: copy,
+			bookSearchResults: books,
+			isGettingRequest: false
+		})
+
+		// this.state.isbns = copy;
+		// this.state.bookSearchResults = books;
+		// this.state.isGettingRequest = true;
+
+
+
+		//this.setLoading(false);
+
+		//alert("isbns: " + this.state.isbns);
+
+
+		//this.setBookSearchResults(books);
+
+	}
+
+	getParsedImgUrl(index){
+
+		var book1 = this.state.bookSearchResults[index];
+		var isbn1 = this.state.isbns[index];
+
+		var book2 = this.state.bookSearchResults[index+1];
+		var isbn2 = this.state.isbns[index+1];
+
+		var book3 = this.state.bookSearchResults[index+2];
+		var isbn3 = this.state.isbns[index+2];
+
+		//console.log("isbn: " + isbn1);
+		//console.log( "book " + JSON.parse(book1)[isbn1].bib_key);
+
+		var parsed = [];
+
+		if(JSON.parse(book1)[isbn1].hasOwnProperty('thumbnail_url')){
+			parsed.push(JSON.parse(book1)[isbn1].thumbnail_url)
+		}
+		else{
+			parsed.push('0');
+		}
+
+		if(JSON.parse(book2)[isbn2].hasOwnProperty('thumbnail_url')){
+			parsed.push(JSON.parse(book2)[isbn2].thumbnail_url)
+		}
+		else{
+			parsed.push('0');
+		}
+
+		if(JSON.parse(book2)[isbn2].hasOwnProperty('thumbnail_url')){
+			parsed.push(JSON.parse(book1)[isbn1].thumbnail_url)
+		}
+		else{
+			parsed.push('0');
+		}
+
+		//var parsed = [JSON.parse(book1)[isbn1].thumbnail_url, JSON.parse(book2)[book2].thumbnail_url, JSON.parse(book3)[book3].thumbnail_url]
+		return parsed;
+	}
+
+	async getBookImages(url){
+
+		this.setLoading(true);
+
+		var url = 'http://localhost:9000/api/getBookImage';
+		var img;
+		await axios
+		.get(url,
+		{
+			params: {
+				imgUrl: url
+			}
+		})
+		.then(res =>
+		{
+			//this.setState({bookSearchResults: res.data});
+
+			img = res.data;
+		})
+		.catch(error => {
+			console.log(error.response);
+		});
+
 		this.setLoading(false);
-		// alert("getBooks: " + books);
-		this.setBookSearchResults(books);
+		return img;
 	}
 
 
@@ -251,8 +347,9 @@ class App extends React.Component {
     render() {
         return (
             <div className="HomeNavBar">
-                <GettingData  password = {this.state.password} email = {this.state.email} setPass = {this.setPass} setEmail = {this.setEmail} handleRegister = {this.handleRegister} handleLogin = {this.handleLogin} authToken = {this.state.authToken} isGettingRequest = {this.state.isGettingRequest} setBookSearchResults = {this.setBookSearchResults} setLoading = {this.setLoading} bookSearchResults = {this.state.bookSearchResults} getBooks = {this.getBooks}/>
-                <p className="App-intro">{this.state.apiResponse}</p>      
+                <GettingData  password = {this.state.password} email = {this.state.email} setPass = {this.setPass} setEmail = {this.setEmail} handleRegister = {this.handleRegister} handleLogin = {this.handleLogin} authToken = {this.state.authToken} isGettingRequest = {this.state.isGettingRequest}
+                 setBookSearchResults = {this.setBookSearchResults} setLoading = {this.setLoading} bookSearchResults = {this.state.bookSearchResults} getBooks = {this.getBooks} isbns = {this.state.isbns} getParsedImgUrl = {this.getParsedImgUrl} changeBookName = {this.changeBookName}/>
+                <p className="App-intro">{this.state.apiResponse}</p>     
             </div>   
         );
     }
@@ -266,7 +363,9 @@ function GettingData(props) {
 		//return <Loading/>
 		//return <BookResultsPage />
 		//return <BooksLayout />
-		return <Routes  password = {props.password} email = {props.email} setPass = {props.setPass} setEmail = {props.setEmail} handleRegister = {props.handleRegister} handleLogin = {props.handleLogin} authToken = {props.authToken} setBookSearchResults = {props.setBookSearchResults} setLoading = {props.setLoading} bookSearchResults = {props.bookSearchResults} getBooks = {props.getBooks}/>
+		//return <HomePage authToken = {true} getBooks = {props.getBooks} changeBookName = {props.changeBookName} setLoading = {props.setLoading} bookSearchResults = {props.bookSearchResults} getParsedImgUrl = {props.getParsedImgUrl} />;
+		return <Routes  password = {props.password} email = {props.email} setPass = {props.setPass} setEmail = {props.setEmail} handleRegister = {props.handleRegister} handleLogin = {props.handleLogin} authToken = {props.authToken}
+		setBookSearchResults = {props.setBookSearchResults} setLoading = {props.setLoading} bookSearchResults = {props.bookSearchResults} getBooks = {props.getBooks} isbns = {props.isbns} getParsedImgUrl = {props.getParsedImgUrl} changeBookName = {props.changeBookName}/>
 	}
 	return (
 		<Loading />

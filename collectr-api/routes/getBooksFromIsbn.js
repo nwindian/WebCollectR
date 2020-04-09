@@ -15,10 +15,15 @@ router.get('/', cors(options), function(req, res, next) {
 	var jsonIsbns = req.query;
 	var isbns = JSON.parse(jsonIsbns.books);
 
-	 var arrayOfPromises = isbns.map((isbn) => rp('https://openlibrary.org/api/books?bibkeys=ISBN:' + isbn));
+	var arrayOfPromises = isbns.map((isbn) => rp('https://openlibrary.org/api/books?bibkeys=ISBN:' + isbn +"&format=json"));
 	Promise.all(arrayOfPromises)
 		.then((arrayOfHtml) => {
-
+			// fs.writeFile('boi.txt',arrayOfHtml, (err)=>{
+			// 	if(err) throw err;
+			// });
+			// for(var i = 0; i < arrayOfHtml.length; i++){
+			// 	arrayOfHtml[i] = arrayOfHtml[i].splice(0,17)
+			// }
 			res.send(arrayOfHtml);
 		})
 		.catch(function(err) {console.log('Error Getting books from ISBN'); });

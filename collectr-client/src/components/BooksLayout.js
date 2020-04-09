@@ -37,22 +37,22 @@ class BooksLayout extends React.Component{
 
 	
 	createSquares(){
-		var layout = [];
-		var y = 2;
-		for(var i = 0; i <(Object.keys(this.props.bookSearchResults).length); i+=3 ){
-			var idOne = Math.random().toString(36).slice(2);
-			var idTwo = Math.random().toString(36).slice(2);
-			var idThree = Math.random().toString(36).slice(2);
+		// var layout = [];
+		// var y = 2;
+		// for(var i = 0; i <(Object.keys(this.props.bookSearchResults).length); i+=3 ){
+		// 	var idOne = Math.random().toString(36).slice(2);
+		// 	var idTwo = Math.random().toString(36).slice(2);
+		// 	var idThree = Math.random().toString(36).slice(2);
 
-			if((i % 3 == 0) && i != 0){
-				y += 9;
-			}
+		// 	if((i % 3 == 0) && i != 0){
+		// 		y += 9;
+		// 	}
 
 			
-			layout += {i: idOne, x: 3, y: y, w:1.7, h: 8, static:true};
-			layout += {i: idTwo, x: 5, y: y, w:1.7, h: 8, static:true};
-			layout += {i: idThree, x: 7, y: y, w:1.7, h: 8, static:true};
-		}
+		// 	layout += {i: idOne, x: 3, y: y, w:1.7, h: 8, static:true};
+		// 	layout += {i: idTwo, x: 5, y: y, w:1.7, h: 8, static:true};
+		// 	layout += {i: idThree, x: 7, y: y, w:1.7, h: 8, static:true};
+		// }
 	}
     render() {
 	    // const layout = [
@@ -62,6 +62,8 @@ class BooksLayout extends React.Component{
 	    // ];
 		var layouts = [];
 		var y = 2;
+
+		//alert("Before: " + (typeof this.props.bookSearchResults[0]));
 		for(var i = 0; i <(Object.keys(this.props.bookSearchResults).length); i+=3 ){
 			var idOne = Math.random().toString(36).slice(2);
 			var idTwo = Math.random().toString(36).slice(2);
@@ -71,19 +73,46 @@ class BooksLayout extends React.Component{
 				y += 9;
 			}
 
-			
-			layouts.push( {i: idOne, x: 4, y: y, w:2.1, h: 8, static:true});
-			layouts.push({i: idTwo, x: 7, y: y, w:2.1, h: 8, static:true});
-			layouts.push({i: idThree, x: 10, y: y, w:2.1, h: 8, static:true});
+			var imgArray = this.props.getParsedImgUrl(i);
+			if(imgArray[0] != "0"){
+				var str = imgArray[0];
+				var res = str.replace("-S","-M");
+				imgArray[0] = res;
+			}
+			if(imgArray[1] != "0"){
+				var str = imgArray[0];
+				var res = str.replace("-S","-M");
+				imgArray[1] = res;
+			}
+			if(imgArray[2] != "0"){
+				var str = imgArray[0];
+				var res = str.replace("-S","-M");
+				imgArray[2] = res;
+			}
+
+			console.log(imgArray);
+			//parse up the chain	
+			layouts.push( {i: idOne, x: 2, y: y, w:2.1, h: 8, static:true, img: imgArray[0]});
+			layouts.push({i: idTwo, x: 5, y: y, w:2.1, h: 8, static:true, img: imgArray[1]});
+			layouts.push({i: idThree, x: 8, y: y, w:2.1, h: 8, static:true, img: imgArray[2]});
 			//alert(layouts.length);
 		}
 		//alert(layouts.length);
+		var copy;
+		var spliced;
+ 
+ 		// if(this.props.bookSearchResults != ""){
+ 		// 	if(this.props.bookSearchResults[0][this.props.isbns[0]] != ""){
+
+  	// 			console.log(JSON.parse(this.props.bookSearchResults[0])[this.props.isbns[0]].thumbnail_url);
+			//  	//console.log("Layout: " + this.props.bookSearchResults[0][this.props.isbns[0]]) 					
+ 		// 	}
+		
+ 		// }
 
 		const layoutsArray = Array.from(layouts);
-		//alert(layoutsArray.length);
-    	//<div key="a"><Fill bookSearchResults ={this.props.bookSearchResults}/></div>
-   		//<div key="b">b</div>
-		//<div key="c">c</div>
+		
+
 		return (
 
 		<div>
@@ -93,7 +122,7 @@ class BooksLayout extends React.Component{
 
 	      	{ 
 	      		layoutsArray.map((item,index) => (
-	      			   <div key={item.i}> {index} </div>
+	      			   <div key={item.i}> <img id="bookImage" src={item.img} onerror="this.onerror=null; this.src='https://pngimage.net/wp-content/uploads/2018/06/image-not-found-png-3.png'" /> </div>
 	      			))
 	      	}
 

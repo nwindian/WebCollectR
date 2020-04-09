@@ -98,3 +98,11 @@ body {
   margin: 10px 0;
   padding: 10px;
 }
+
+
+#bookImage {
+  padding: 10px;
+  height: 150px;
+  padding-left: 95px;
+  border-radius: 10px;
+}
