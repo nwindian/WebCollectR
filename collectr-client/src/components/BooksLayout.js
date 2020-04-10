@@ -62,39 +62,43 @@ class BooksLayout extends React.Component{
 	    // ];
 		var layouts = [];
 		var y = 2;
+		var x = 2;
 
 		//alert("Before: " + (typeof this.props.bookSearchResults[0]));
-		for(var i = 0; i <(Object.keys(this.props.bookSearchResults).length); i+=3 ){
+		for(var i = 0; i <(Object.keys(this.props.bookSearchResults).length); i+=1 ){
 			var idOne = Math.random().toString(36).slice(2);
 			var idTwo = Math.random().toString(36).slice(2);
 			var idThree = Math.random().toString(36).slice(2);
 
 			if((i % 3 == 0) && i != 0){
 				y += 9;
+				x = 2;
 			}
 
 			var imgArray = this.props.getParsedImgUrl(i);
-			if(imgArray[0] != "0"){
-				var str = imgArray[0];
+			if(imgArray != "0"){
+				var str = imgArray;
 				var res = str.replace("-S","-M");
-				imgArray[0] = res;
+				imgArray = res;
 			}
-			if(imgArray[1] != "0"){
-				var str = imgArray[0];
-				var res = str.replace("-S","-M");
-				imgArray[1] = res;
-			}
-			if(imgArray[2] != "0"){
-				var str = imgArray[0];
-				var res = str.replace("-S","-M");
-				imgArray[2] = res;
-			}
+			// if(imgArray[1] != "0"){
+			// 	var str = imgArray[1];
+			// 	var res = str.replace("-S","-M");
+			// 	imgArray[1] = res;
+			// }
+			// if(imgArray[2] != "0" && imgArray != "undefined"){
+			// 	console.log("imageArray2: " + imgArray[2]);
+			// 	var str = imgArray[2];
+			// 	var res = str.replace("-S","-M");
+			// 	imgArray[1] = res;
+			// }
 
 			console.log(imgArray);
 			//parse up the chain	
-			layouts.push( {i: idOne, x: 2, y: y, w:2.1, h: 8, static:true, img: imgArray[0]});
-			layouts.push({i: idTwo, x: 5, y: y, w:2.1, h: 8, static:true, img: imgArray[1]});
-			layouts.push({i: idThree, x: 8, y: y, w:2.1, h: 8, static:true, img: imgArray[2]});
+			layouts.push( {i: idOne, x: x, y: y, w:2.1, h: 8, static:true, img: imgArray, isbn: this.props.isbns[i]});
+			x+=3;
+			//layouts.push({i: idTwo, x: 5, y: y, w:2.1, h: 8, static:true, img: imgArray[1], isbn: this.props.isbns[i+1]});
+			//layouts.push({i: idThree, x: 8, y: y, w:2.1, h: 8, static:true, img: imgArray[2], isbn: this.props.isbns[i+2]});
 			//alert(layouts.length);
 		}
 		//alert(layouts.length);
@@ -122,7 +126,9 @@ class BooksLayout extends React.Component{
 
 	      	{ 
 	      		layoutsArray.map((item,index) => (
-	      			   <div key={item.i}> <img id="bookImage" src={item.img} onerror="this.onerror=null; this.src='https://pngimage.net/wp-content/uploads/2018/06/image-not-found-png-3.png'" /> </div>
+	      			   <div key={item.i} > <img id="bookImage" src={item.img} onError={(e)=>{e.target.onerror = null; e.target.src="../NoImage.png"}} />
+	      			   		<div> {item.isbn} </div>
+	      			    </div>
 	      			))
 	      	}
 

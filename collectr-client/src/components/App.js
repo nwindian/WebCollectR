@@ -79,7 +79,7 @@ class App extends React.Component {
 			await axios
 				.post('http://localhost:9000/api/getUserLogin', user)
 				.then(function (response){
-					console.log(response);
+					//console.log(response);
 					userId = response.data.userId;
 
 				})
@@ -198,7 +198,7 @@ class App extends React.Component {
 			})
 			.then(res =>
 			{
-				console.log(res.data);
+				//console.log(res.data);
 				books = res.data;
 				//return res.data;
 
@@ -224,7 +224,7 @@ class App extends React.Component {
 			copy.push('ISBN:' + bookResults[i]);
 		}
 
-		console.log(bookResults)
+		//console.log(bookResults)
 		this.setState({
 			isbns: copy,
 			bookSearchResults: books,
@@ -248,14 +248,23 @@ class App extends React.Component {
 
 	getParsedImgUrl(index){
 
-		var book1 = this.state.bookSearchResults[index];
-		var isbn1 = this.state.isbns[index];
+		var temp = index;
+		var book1 = this.state.bookSearchResults[temp];
+		var isbn1 = this.state.isbns[temp];
 
-		var book2 = this.state.bookSearchResults[index+1];
-		var isbn2 = this.state.isbns[index+1];
+		// console.log("book1: " + book1);
 
-		var book3 = this.state.bookSearchResults[index+2];
-		var isbn3 = this.state.isbns[index+2];
+		// ++temp;
+
+		// var book2 = this.state.bookSearchResults[temp];
+		// var isbn2 = this.state.isbns[temp];
+
+		// console.log("book2: " + book2);
+
+		// ++temp
+
+		// var book3 = this.state.bookSearchResults[temp];
+		// var isbn3 = this.state.isbns[temp];
 
 		//console.log("isbn: " + isbn1);
 		//console.log( "book " + JSON.parse(book1)[isbn1].bib_key);
@@ -269,22 +278,23 @@ class App extends React.Component {
 			parsed.push('0');
 		}
 
-		if(JSON.parse(book2)[isbn2].hasOwnProperty('thumbnail_url')){
-			parsed.push(JSON.parse(book2)[isbn2].thumbnail_url)
-		}
-		else{
-			parsed.push('0');
-		}
+		// if(JSON.parse(book2)[isbn2].hasOwnProperty('thumbnail_url')){
+		// 	parsed.push(JSON.parse(book2)[isbn2].thumbnail_url)
+		// }
+		// else{
+		// 	parsed.push('0');
+		// }
 
-		if(JSON.parse(book2)[isbn2].hasOwnProperty('thumbnail_url')){
-			parsed.push(JSON.parse(book1)[isbn1].thumbnail_url)
-		}
-		else{
-			parsed.push('0');
-		}
+		// if()
+		// if(JSON.parse(book3)[isbn3].hasOwnProperty('thumbnail_url')){
+		// 	parsed.push(JSON.parse(book3)[isbn3].thumbnail_url)
+		// }
+		// else{
+		// 	parsed.push('0');
+		// }
 
 		//var parsed = [JSON.parse(book1)[isbn1].thumbnail_url, JSON.parse(book2)[book2].thumbnail_url, JSON.parse(book3)[book3].thumbnail_url]
-		return parsed;
+		return parsed[0];
 	}
 
 	async getBookImages(url){
@@ -335,7 +345,7 @@ class App extends React.Component {
 			for(var i=0; i < res.data.docs[i].isbn.length; i++){
 				bookResults = bookResults.concat(res.data.docs[i].isbn);
 			}
-			console.log(bookResults);
+			//console.log(bookResults);
 		})
 		.catch(error => {
 			console.log(error.response);

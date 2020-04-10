@@ -26,7 +26,7 @@ router.get('/', cors(options), function(req, res, next) {
 			// }
 			res.send(arrayOfHtml);
 		})
-		.catch(function(err) {console.log('Error Getting books from ISBN'); });
+		.catch(function(err) {console.log(err.response); });
 
 	console.log(arrayOfPromises);
 });
