@@ -26,7 +26,6 @@ class SidePaneSearch extends React.Component {
 			</div>
 		)
 	}
-
 }
 
 export default SidePaneSearch;

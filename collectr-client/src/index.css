@@ -15,6 +15,20 @@
   z-index: 1;
 }
 
+.topnav #b {
+
+  position: absolute;
+  right: 1px;
+  bottom: 10px;
+  padding-bottom: 20px;
+  size: 200px;
+  width: 160px;
+  height: 65px;
+  left: -30px;
+  background-image: url(lightLogo.PNG);
+  background-size: 210px 120px;
+}
+
 /* Style the links inside the navigation bar */
 .topnav #a {
 
@@ -26,12 +40,13 @@
   padding-right: 10px;
   border-spacing: 5px;
   padding-top: 15px;
-  padding-bottom: 10px;
+  padding-bottom: 12px;
   text-decoration: none;
   font-size: 14px;
   font-family: arial;
   font-weight: bold;
   border-radius: 10px;
+  
 }
 
 .topnav #a:hover {
@@ -100,12 +115,10 @@
 }
 
 #logo {
-  color: #333;
-  position: fixed;
-  top: 30%;
-  left: 42%;  font-family: arial;
-  font-size: 65px;
-  font-weight: bold;
+  position: absolute;
+  left: 525px;
+  width: 800px;
+  height: 600px;
 }
 
 #button {

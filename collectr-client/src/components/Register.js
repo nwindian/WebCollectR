@@ -12,7 +12,7 @@ class Register extends React.Component{
             <div>
                 <div className = "topnav">
                     <Link to="/">
-                      <button className="HomeButton" id="b" href="#home">CollectR</button>
+                      <button className="HomeButton" id="b" href="#home"></button>
                     </Link>
                     <Link to="/Register">
                       <button id="a">SignUp</button>
@@ -21,7 +21,7 @@ class Register extends React.Component{
                       <button id="a" href="#Login">Login</button>
                     </Link>
                 </div>
-                <div id="logo">CollectR</div>
+                <img src={require("../darkLogo.PNG")} id="logo"></img>
 
                 <div>
                     <form id="loginform">
