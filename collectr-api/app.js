@@ -24,7 +24,7 @@ var getBooksFromIsbn = require('./routes/getBooksFromIsbn');
 var getBookImage = require('./routes/getBookImage');
 var postBookToDb = require('./routes/postBookToDb');
 var deleteBookFromDb = require('./routes/deleteBookFromDb');
-
+var getUsersBooksFromDb = require('./routes/getUsersBooksFromDb');
 
 //Connection to db
 const connection = mysql.createConnection({
@@ -54,6 +54,7 @@ app.use("/api/getBooksFromIsbn", getBooksFromIsbn);
 app.use("/api/getBookImage", getBookImage);
 app.use("/api/postBookToDb", postBookToDb);
 app.use("/api/deleteBookFromDb", deleteBookFromDb);
+app.use("/api/getUsersBooksFromDb", getUsersBooksFromDb);
 app.use('/', indexRouter);
 
 // catch 404 and forward to error handler

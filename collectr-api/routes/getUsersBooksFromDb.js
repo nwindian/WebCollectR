@@ -18,39 +18,36 @@ router.post('/', cors(options), function(req, res, next) {
 	connection.connect();
 
 	//Create new user for db
-	const newUser = {
-		email: req.body.email,
-		password: req.body.password,
+	const user = {
+		userId: req.body.userId,
 	};
 
-	console.log(newUser.email);
-
-	var userId = 0;
-	fetchUser(newUser, function(err, content){
+	fetchUser(user, function(err, content){
 		if (err){
 			console.log(err);
 		}
 		else
 		{
-			userId = content;
-			res.json({"userId" : userId});	
+			res.json(content);	
 		}
 	});
 
-	function fetchUser(newUser, callback){
-		var sql = "SELECT id FROM userinfo WHERE email = '" + newUser.email + "' AND password = '" + newUser.password + "';"
+	function fetchUser(user, callback){
+		var sql = "SELECT title,author,isbn,img_url FROM books WHERE user_id =" + user.userId + ";"
 		connection.query(sql, function(err, result, fields) {
 			if(err) {
 				callback(err, null);
 			} else{
-				console.log("id received: " + result[0].id);
+				console.log(result);
 				//response = result;
 				//row = result[0];
 				//id = row.email;
-				callback(err, result[0].id);
+
+				callback(err, result);
 			}
 		});
 	}
+
     connection.end();
 });
 

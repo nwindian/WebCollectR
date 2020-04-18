@@ -29,11 +29,11 @@ import PrivateRoute from './privateRoutes.js';
       </Route>
 
       <PrivateRoute authToken={props.authToken} path='/HomePage'>
-        <HomePage authToken={props.authToken} email = {props.email} setBookSearchResults = {props.setBookSearchResults} setLoading = {props.setLoading} bookSearchResults = {props.bookSearchResults} getBooks = {props.getBooks} isbns = {props.isbns} getParsedImgUrl = {props.getParsedImgUrl} changeBookName = {props.changeBookName}/>
+        <HomePage authToken={props.authToken} email = {props.email} setBookSearchResults = {props.setBookSearchResults} setLoading = {props.setLoading} bookSearchResults = {props.bookSearchResults} getBooks = {props.getBooks} isbns = {props.isbns} getParsedImgUrl = {props.getParsedImgUrl} changeBookName = {props.changeBookName} getUsersBooksFromDb = {props.getUsersBooksFromDb}/>
       </PrivateRoute>
 
       <PrivateRoute authToken={props.authToken} path='/SearchResults'>
-        <BookResultsPage email={props.email} authToken={props.authToken} setBookSearchResults = {props.setBookSearchResults} bookSearchResults = {props.bookSearchResults} getBooks = {props.getBooks} isbns = {props.isbns} getParsedImgUrl = {props.getParsedImgUrl} changeBookName = {props.changeBookName} getTitle = {props.getTitle} addBookToDb = {props.addBookToDb} getAuthor = {props.getAuthor}/>
+        <BookResultsPage email={props.email} authToken={props.authToken} setBookSearchResults = {props.setBookSearchResults} bookSearchResults = {props.bookSearchResults} getBooks = {props.getBooks} isbns = {props.isbns} getParsedImgUrl = {props.getParsedImgUrl} changeBookName = {props.changeBookName} getTitle = {props.getTitle} addBookToDb = {props.addBookToDb} getAuthor = {props.getAuthor} isHomePage = {false}/>
       </PrivateRoute>
 
 

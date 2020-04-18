@@ -10,7 +10,6 @@ import '../GridLayout.css'
 import HomeNavBar from './HomeNavBar.js';
 import SidePane from './SidePane.js'
 
-
 const ReactGridLayout = WidthProvider(RGL);
 
 class Fill extends React.Component{
@@ -35,63 +34,73 @@ class Fill extends React.Component{
 
 class BooksLayout extends React.Component{
 
-	
-	createSquares(){
-		// var layout = [];
-		// var y = 2;
-		// for(var i = 0; i <(Object.keys(this.props.bookSearchResults).length); i+=3 ){
-		// 	var idOne = Math.random().toString(36).slice(2);
-		// 	var idTwo = Math.random().toString(36).slice(2);
-		// 	var idThree = Math.random().toString(36).slice(2);
 
-		// 	if((i % 3 == 0) && i != 0){
-		// 		y += 9;
-		// 	}
+	async getBooksFromDb(){
 
-			
-		// 	layout += {i: idOne, x: 3, y: y, w:1.7, h: 8, static:true};
-		// 	layout += {i: idTwo, x: 5, y: y, w:1.7, h: 8, static:true};
-		// 	layout += {i: idThree, x: 7, y: y, w:1.7, h: 8, static:true};
-		// }
+		var bookResults = [];
+		await this.props.getUsersBooksFromDb().then(result => {
+			console.log("result: " + result);
+			bookResults = result;
+		});
+
+		return bookResults;
 	}
+
     render() {
-	    // const layout = [
-	    //   {i: 'a', x: 3, y: 2, w: 1.7, h: 8, static: true},
-	    //   {i: 'b', x: 5, y: 2, w: 1.7, h: 8, static: true},
-	    //   {i: 'b', x: 7, y: 2, w: 1.7, h: 8, static: true}
-	    // ];
-		var layouts = [];
+    	var layouts = [];
 		var y = 2;
 		var x = 2;
 
-		//alert("Before: " + (typeof this.props.bookSearchResults[0]));
-		for(var i = 0; i <(Object.keys(this.props.bookSearchResults).length); i+=1 ){
-			var idOne = Math.random().toString(36).slice(2);
-			var idTwo = Math.random().toString(36).slice(2);
-			var idThree = Math.random().toString(36).slice(2);
+	    if(this.props.isHomePage == true){
 
-			if((i % 3 == 0) && i != 0){
-				y += 9;
-				x = 2;
+	    	var usersBooks = this.getBooksFromDb();
+	    	console.log("books: " + usersBooks);
+
+			//alert("Before: " + (typeof this.props.bookSearchResults[0]));
+			for(var i = 0; i <(Object.keys(usersBooks).length); i+=1 ){
+				var idOne = Math.random().toString(36).slice(2);
+				var idTwo = Math.random().toString(36).slice(2);
+				var idThree = Math.random().toString(36).slice(2);
+
+				if((i % 3 == 0) && i != 0){
+					y += 9;
+					x = 2;
+				}
+
+				//parse up the chain	
+				layouts.push( {i: idOne, x: x, y: y, w:2.1, h: 8, static:true, img: usersBooks[i].img_url, isbn: usersBooks[i].isbn, title: usersBooks[i].title, author: usersBooks[i].author, checked: true});
+				x+=3;
+			}
+	    }
+	    else{
+
+			//alert("Before: " + (typeof this.props.bookSearchResults[0]));
+			for(var i = 0; i <(Object.keys(this.props.bookSearchResults).length); i+=1 ){
+				var idOne = Math.random().toString(36).slice(2);
+				var idTwo = Math.random().toString(36).slice(2);
+				var idThree = Math.random().toString(36).slice(2);
+
+				if((i % 3 == 0) && i != 0){
+					y += 9;
+					x = 2;
+				}
+
+				var imgArray = this.props.getParsedImgUrl(i);
+				var book = this.props.getTitle(i);
+				var author = this.props.getAuthor(i);
+				if(imgArray != "0"){
+					var str = imgArray;
+					var res = str.replace("-S","-M");
+					imgArray = res;
+				}
+
+				console.log(imgArray);
+				//parse up the chain	
+				layouts.push( {i: idOne, x: x, y: y, w:2.1, h: 8, static:true, img: imgArray, isbn: this.props.isbns[i], title: book, author: author, checked: false});
+				x+=3;
 			}
 
-			var imgArray = this.props.getParsedImgUrl(i);
-			var book = this.props.getTitle(i);
-			var author = this.props.getAuthor(i);
-			if(imgArray != "0"){
-				var str = imgArray;
-				var res = str.replace("-S","-M");
-				imgArray = res;
-			}
-
-			console.log(imgArray);
-			//parse up the chain	
-			layouts.push( {i: idOne, x: x, y: y, w:2.1, h: 8, static:true, img: imgArray, isbn: this.props.isbns[i], title: book, author: author, checked: false});
-			x+=3;
-		}
-
-		var copy;
-		var spliced;
+	    }
 
 		const layoutsArray = Array.from(layouts);
 		

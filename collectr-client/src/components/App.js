@@ -41,6 +41,7 @@ class App extends React.Component {
 		this.getTitle = this.getTitle.bind(this);
 		this.addBookToDb = this.addBookToDb.bind(this);
 		this.getAuthor = this.getAuthor.bind(this);
+		this.getUsersBooksFromDb = this.getUsersBooksFromDb.bind(this);
 		axios.defaults.withCredentials = true;
 	}
 
@@ -236,21 +237,32 @@ class App extends React.Component {
 			isGettingRequest: false
 		})
 
-		// this.state.isbns = copy;
-		// this.state.bookSearchResults = books;
-		// this.state.isGettingRequest = true;
-
-
-
-		//this.setLoading(false);
-
-		//alert("isbns: " + this.state.isbns);
-
-
-		//this.setBookSearchResults(books);
 
 	}
 
+	async getUsersBooksFromDb(){
+
+
+		const userId = this.state.userId;
+		const user = {
+			userId,
+		};
+		
+		var bookResults = [];
+		await axios
+			.post('http://localhost:9000/api/getUsersBooksFromDb', user)
+			.then(function (response){
+				//console.log(response);
+				//console.log("books: " + JSON.stringify(response));
+				bookResults = response.data;
+
+			})
+			.catch(err => {
+				console.log(err.response);
+			});	
+
+		return bookResults;
+	}
 	getParsedImgUrl(index){
 
 		var temp = index;
@@ -433,7 +445,7 @@ class App extends React.Component {
         return (
             <div className="HomeNavBar">
                 <GettingData  password = {this.state.password} email = {this.state.email} setPass = {this.setPass} setEmail = {this.setEmail} handleRegister = {this.handleRegister} handleLogin = {this.handleLogin} authToken = {this.state.authToken} isGettingRequest = {this.state.isGettingRequest}
-                 setBookSearchResults = {this.setBookSearchResults} setLoading = {this.setLoading} bookSearchResults = {this.state.bookSearchResults} getBooks = {this.getBooks} isbns = {this.state.isbns} getParsedImgUrl = {this.getParsedImgUrl} changeBookName = {this.changeBookName} getTitle = {this.getTitle} addBookToDb = {this.addBookToDb} getAuthor = {this.getAuthor}/>
+                 setBookSearchResults = {this.setBookSearchResults} setLoading = {this.setLoading} bookSearchResults = {this.state.bookSearchResults} getBooks = {this.getBooks} isbns = {this.state.isbns} getParsedImgUrl = {this.getParsedImgUrl} changeBookName = {this.changeBookName} getTitle = {this.getTitle} addBookToDb = {this.addBookToDb} getAuthor = {this.getAuthor} getUsersBooksFromDb = {this.getUsersBooksFromDb}/>
                 <p className="App-intro">{this.state.apiResponse}</p>     
             </div>   
         );
@@ -450,7 +462,8 @@ function GettingData(props) {
 		//return <BooksLayout />
 		//return <HomePage authToken = {true} getBooks = {props.getBooks} changeBookName = {props.changeBookName} setLoading = {props.setLoading} bookSearchResults = {props.bookSearchResults} getParsedImgUrl = {props.getParsedImgUrl} />;
 		return <Routes  password = {props.password} email = {props.email} setPass = {props.setPass} setEmail = {props.setEmail} handleRegister = {props.handleRegister} handleLogin = {props.handleLogin} authToken = {props.authToken}
-		setBookSearchResults = {props.setBookSearchResults} setLoading = {props.setLoading} bookSearchResults = {props.bookSearchResults} getBooks = {props.getBooks} isbns = {props.isbns} getParsedImgUrl = {props.getParsedImgUrl} changeBookName = {props.changeBookName} getTitle = {props.getTitle} addBookToDb = {props.addBookToDb} getAuthor = {props.getAuthor}/>
+		setBookSearchResults = {props.setBookSearchResults} setLoading = {props.setLoading} bookSearchResults = {props.bookSearchResults} getBooks = {props.getBooks} isbns = {props.isbns} getParsedImgUrl = {props.getParsedImgUrl}
+		changeBookName = {props.changeBookName} getTitle = {props.getTitle} addBookToDb = {props.addBookToDb} getAuthor = {props.getAuthor} getUsersBooksFromDb = {props.getUsersBooksFromDb}/>
 	}
 	return (
 		<Loading />

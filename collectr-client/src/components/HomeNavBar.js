@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import '../index.css';
+import { Link} from 'react-router-dom'
 
 class HomeNavBar extends React.Component{
 
@@ -9,8 +10,13 @@ class HomeNavBar extends React.Component{
     	{
     		return (
     			<div className = "topnav">
-                	<button className="HomeButton" id="b" href="#home"></button>
+                    <Link to="/HomePage">
+                	   <button className="HomeButton" id="b" href="#home"></button>
+                    </Link>
                 	<button id="a" href="#SignUp">{this.props.email}</button>
+                    <Link to="/HomePage">
+                        <button id="a">Home</button>
+                    </Link>
             	</div>
     		)
     	}
