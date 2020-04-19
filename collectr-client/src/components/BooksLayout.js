@@ -34,29 +34,52 @@ class Fill extends React.Component{
 
 class BooksLayout extends React.Component{
 
+	constructor(props) {
+		super(props);
+		this.state = { 
+			bookSearchResults: [],
+		};
+	}
 
+	 componentDidMount(){
+
+	 	this.props.getUsersBooksFromDb().then((value) =>{
+			this.setState({
+				bookSearchResults: value
+			});	 		
+	 	}, (err) => {
+	 		console.log(err);
+	 	});
+
+	}
 	async getBooksFromDb(){
 
 		var bookResults = [];
 		await this.props.getUsersBooksFromDb().then(result => {
-			console.log("result: " + result);
+			//console.log("result: " + result);
 			bookResults = result;
-		});
+		})
+		.catch(err => {
+				console.log(err.response);
+		});	
 
 		return bookResults;
 	}
 
     render() {
+
     	var layouts = [];
 		var y = 2;
-		var x = 2;
+		var x = 4;
 
 	    if(this.props.isHomePage == true){
 
-	    	var usersBooks = this.getBooksFromDb();
-	    	console.log("books: " + usersBooks);
+	    	var usersBooks = this.state.bookSearchResults;
+	    	console.log("books: " + JSON.stringify(usersBooks));
+
 
 			//alert("Before: " + (typeof this.props.bookSearchResults[0]));
+			var j = 0;
 			for(var i = 0; i <(Object.keys(usersBooks).length); i+=1 ){
 				var idOne = Math.random().toString(36).slice(2);
 				var idTwo = Math.random().toString(36).slice(2);
@@ -64,12 +87,18 @@ class BooksLayout extends React.Component{
 
 				if((i % 3 == 0) && i != 0){
 					y += 9;
-					x = 2;
+					x = 4;
 				}
+				console.log("YOOOOOO    " +JSON.stringify(usersBooks.data[0].img_url));
 
-				//parse up the chain	
-				layouts.push( {i: idOne, x: x, y: y, w:2.1, h: 8, static:true, img: usersBooks[i].img_url, isbn: usersBooks[i].isbn, title: usersBooks[i].title, author: usersBooks[i].author, checked: true});
-				x+=3;
+				//var url = usersBooks.data[j].img_url;
+				//parse up the chain
+				if(j < usersBooks.data.length){
+					layouts.push( {i: idOne, x: x, y: y, w:3.0, h: 8, static:true, img: usersBooks.data[j].img_url, isbn: usersBooks.data[j].isbn, title: usersBooks.data[j].title, author: usersBooks.data[j].author, checked: true});
+					x+=3;
+					++j;					
+				}	
+
 			}
 	    }
 	    else{

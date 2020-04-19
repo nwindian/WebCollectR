@@ -254,8 +254,7 @@ class App extends React.Component {
 			.then(function (response){
 				//console.log(response);
 				//console.log("books: " + JSON.stringify(response));
-				bookResults = response.data;
-
+				bookResults = response;
 			})
 			.catch(err => {
 				console.log(err.response);

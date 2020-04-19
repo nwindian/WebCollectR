@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const cors = require('cors');
 var mysql = require('mysql');
+var rp = require('request-promise');
 //might have to requre app to get connection variable
 
 var options = { origin: 'http://localhost:3000', optionsSuccessStatus: 200};
@@ -28,6 +29,7 @@ router.post('/', cors(options), function(req, res, next) {
 		}
 		else
 		{
+			var resolved = Promise.resolve(content);
 			res.json(content);	
 		}
 	});

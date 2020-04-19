@@ -34,7 +34,7 @@ class HomePage extends React.Component {
 				<div>
 					<HomeNavBar authToken = {this.props.authToken} email = {this.props.email} />
 					<SidePane changeBookName = {this.props.changeBookName} getBooks = {this.props.getBooks} />
-					<BookResultsPage bookSearchResults ={this.props.bookSearchResults} getBooks = {this.props.getBooks} isbns = {this.props.isbns} getParsedImgUrl = {this.props.getParsedImgUrl} getTitle = {this.props.getTitle} addBookToDb = {this.props.addBookToDb} email = {this.props.email} authToken = {this.props.authToken} changeBookName = {this.props.changeBookName} getAuthor = {this.props.getAuthor} isHomePage = {true} getUsersBooksFromDb = {this.props.getUsersBooksFromDb} /> 
+					<BookResultsPage setLoading = {this.props.setLoading} bookSearchResults ={this.props.bookSearchResults} getBooks = {this.props.getBooks} isbns = {this.props.isbns} getParsedImgUrl = {this.props.getParsedImgUrl} getTitle = {this.props.getTitle} addBookToDb = {this.props.addBookToDb} email = {this.props.email} authToken = {this.props.authToken} changeBookName = {this.props.changeBookName} getAuthor = {this.props.getAuthor} isHomePage = {true} getUsersBooksFromDb = {this.props.getUsersBooksFromDb} /> 
 				</div>
 			)			
 		}
