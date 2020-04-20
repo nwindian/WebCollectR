@@ -29,7 +29,7 @@ import PrivateRoute from './privateRoutes.js';
       </Route>
 
       <PrivateRoute authToken={props.authToken} path='/HomePage'>
-        <HomePage authToken={props.authToken} email = {props.email} setBookSearchResults = {props.setBookSearchResults} setLoading = {props.setLoading} bookSearchResults = {props.bookSearchResults} getBooks = {props.getBooks} isbns = {props.isbns} getParsedImgUrl = {props.getParsedImgUrl} changeBookName = {props.changeBookName} getUsersBooksFromDb = {props.getUsersBooksFromDb}/>
+        <HomePage authToken={props.authToken} email = {props.email} setBookSearchResults = {props.setBookSearchResults} setLoading = {props.setLoading} bookSearchResults = {props.bookSearchResults} getBooks = {props.getBooks} isbns = {props.isbns} getParsedImgUrl = {props.getParsedImgUrl} changeBookName = {props.changeBookName} getUsersBooksFromDb = {props.getUsersBooksFromDb} addBookToDb = {props.addBookToDb}/>
       </PrivateRoute>
 
       <PrivateRoute authToken={props.authToken} path='/SearchResults'>

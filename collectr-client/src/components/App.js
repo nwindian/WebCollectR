@@ -378,7 +378,6 @@ class App extends React.Component {
 	//Call api to insert into db
 	addBookToDb = (item) => {
 
-		alert(JSON.stringify(item.checked));
 		//If checked already, they're deleting it so delete from db. Otherwise add it
 		if(item.checked == true){
 			item.checked = false;

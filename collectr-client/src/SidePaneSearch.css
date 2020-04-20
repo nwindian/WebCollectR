@@ -51,6 +51,7 @@
 }
 
 
+#searchInput:-webkit-autofill::first-line {font-size: 58px}
 #searchInput[type="text"]
 {
     width: 100%;

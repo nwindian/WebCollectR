@@ -18,10 +18,7 @@ class HomePage extends React.Component {
 			bookSearchFound: false,
 			isLoading: false
 		};
-		//this.handleSearch = this.handleSearch.bind(this);
-		//this.alertBookName = this.alertBookName.bind(this);
-		//this.getBooksFromIsbn = this.getBooksFromIsbn.bind(this);
-		//this.getBooks = this.getBooks.bind(this);
+
 		axios.defaults.withCredentials = true;
 	}
 
@@ -34,7 +31,7 @@ class HomePage extends React.Component {
 				<div>
 					<HomeNavBar authToken = {this.props.authToken} email = {this.props.email} />
 					<SidePane changeBookName = {this.props.changeBookName} getBooks = {this.props.getBooks} />
-					<BookResultsPage setLoading = {this.props.setLoading} bookSearchResults ={this.props.bookSearchResults} getBooks = {this.props.getBooks} isbns = {this.props.isbns} getParsedImgUrl = {this.props.getParsedImgUrl} getTitle = {this.props.getTitle} addBookToDb = {this.props.addBookToDb} email = {this.props.email} authToken = {this.props.authToken} changeBookName = {this.props.changeBookName} getAuthor = {this.props.getAuthor} isHomePage = {true} getUsersBooksFromDb = {this.props.getUsersBooksFromDb} /> 
+					<BookResultsPage setLoading = {this.props.setLoading} bookSearchResults ={this.props.bookSearchResults} getBooks = {this.props.getBooks} isbns = {this.props.isbns} getParsedImgUrl = {this.props.getParsedImgUrl} getTitle = {this.props.getTitle} addBookToDb = {this.props.addBookToDb} email = {this.props.email} authToken = {this.props.authToken} changeBookName = {this.props.changeBookName} getAuthor = {this.props.getAuthor} isHomePage = {true} getUsersBooksFromDb = {this.props.getUsersBooksFromDb} addBookToDb = {this.props.addBookToDb}/> 
 				</div>
 			)			
 		}

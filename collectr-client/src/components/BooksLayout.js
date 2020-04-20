@@ -70,7 +70,7 @@ class BooksLayout extends React.Component{
 
     	var layouts = [];
 		var y = 2;
-		var x = 4;
+		var x = 5;
 
 	    if(this.props.isHomePage == true){
 
@@ -85,17 +85,19 @@ class BooksLayout extends React.Component{
 				var idTwo = Math.random().toString(36).slice(2);
 				var idThree = Math.random().toString(36).slice(2);
 
-				if((i % 3 == 0) && i != 0){
+				if((i % 2 == 0) && i != 0){
+
 					y += 9;
-					x = 4;
+					x = 5;
 				}
-				console.log("YOOOOOO    " +JSON.stringify(usersBooks.data[0].img_url));
 
 				//var url = usersBooks.data[j].img_url;
 				//parse up the chain
+
+
 				if(j < usersBooks.data.length){
 					layouts.push( {i: idOne, x: x, y: y, w:3.0, h: 8, static:true, img: usersBooks.data[j].img_url, isbn: usersBooks.data[j].isbn, title: usersBooks.data[j].title, author: usersBooks.data[j].author, checked: true});
-					x+=3;
+					x+=4;
 					++j;					
 				}	
 
@@ -109,9 +111,9 @@ class BooksLayout extends React.Component{
 				var idTwo = Math.random().toString(36).slice(2);
 				var idThree = Math.random().toString(36).slice(2);
 
-				if((i % 3 == 0) && i != 0){
+				if((i % 2 == 0) && i != 0){
 					y += 9;
-					x = 2;
+					x = 5;
 				}
 
 				var imgArray = this.props.getParsedImgUrl(i);
@@ -125,8 +127,8 @@ class BooksLayout extends React.Component{
 
 				console.log(imgArray);
 				//parse up the chain	
-				layouts.push( {i: idOne, x: x, y: y, w:2.1, h: 8, static:true, img: imgArray, isbn: this.props.isbns[i], title: book, author: author, checked: false});
-				x+=3;
+				layouts.push( {i: idOne, x: x, y: y, w:3.0, h: 8, static:true, img: imgArray, isbn: this.props.isbns[i], title: book, author: author, checked: false});
+				x+=4;
 			}
 
 	    }
