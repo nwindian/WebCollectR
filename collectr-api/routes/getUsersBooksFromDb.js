@@ -3,19 +3,15 @@ var router = express.Router();
 const cors = require('cors');
 var mysql = require('mysql');
 var rp = require('request-promise');
+const { params, options } = require('../mySQLConnection.js');
 //might have to requre app to get connection variable
 
-var options = { origin: 'http://localhost:3000', optionsSuccessStatus: 200};
-router.post('/', cors(options), function(req, res, next) {
+router.post('/', cors(options), function (req, res, next) {
 
 	var connection = mysql.createConnection({
-	host: 'localhost',
-	user:'root',
-	password:'Pioneer1177!?!?',
-	database: 'collectr',
-	port: '3306'
+		...params
 	});
-	
+
 	connection.connect();
 
 	//Create new user for db
@@ -23,23 +19,22 @@ router.post('/', cors(options), function(req, res, next) {
 		userId: req.body.userId,
 	};
 
-	fetchUser(user, function(err, content){
-		if (err){
+	fetchUser(user, function (err, content) {
+		if (err) {
 			console.log(err);
 		}
-		else
-		{
+		else {
 			var resolved = Promise.resolve(content);
-			res.json(content);	
+			res.json(content);
 		}
 	});
 
-	function fetchUser(user, callback){
+	function fetchUser(user, callback) {
 		var sql = "SELECT title,author,isbn,img_url FROM books WHERE user_id =" + user.userId + ";"
-		connection.query(sql, function(err, result, fields) {
-			if(err) {
+		connection.query(sql, function (err, result, fields) {
+			if (err) {
 				callback(err, null);
-			} else{
+			} else {
 				console.log(result);
 				//response = result;
 				//row = result[0];
@@ -50,7 +45,7 @@ router.post('/', cors(options), function(req, res, next) {
 		});
 	}
 
-    connection.end();
+	connection.end();
 });
 
 module.exports = router;
