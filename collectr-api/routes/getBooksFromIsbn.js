@@ -8,8 +8,8 @@ var rp = require('request-promise');
 //npmvar axios = require('axios');
 //might have to requre app to get connection variable
 
-var options = { origin: 'http://localhost:3000', optionsSuccessStatus: 200};
-router.get('/', cors(options), function(req, res, next) {
+var options = { origin: 'http://localhost:3000', optionsSuccessStatus: 200 };
+router.get('/', cors(options), function (req, res, next) {
 
 	var url = 'https://openlibrary.org/api/books?bibkeys=ISBN:0451526538';
 	var jsonIsbns = req.query;
@@ -18,15 +18,12 @@ router.get('/', cors(options), function(req, res, next) {
 	var arrayOfPromises = isbns.map((isbn) => rp('https://openlibrary.org/api/books?bibkeys=ISBN:' + isbn + "&jscmd=data&format=json"));
 	Promise.all(arrayOfPromises)
 		.then((arrayOfHtml) => {
-			fs.writeFile('boi.txt',arrayOfHtml, (err)=>{
-				if(err) throw err;
-			});
 			// for(var i = 0; i < arrayOfHtml.length; i++){
 			// 	arrayOfHtml[i] = arrayOfHtml[i].splice(0,17)
 			// }
 			res.send(arrayOfHtml);
 		})
-		.catch(function(err) {console.log(err.response); });
+		.catch(function (err) { console.log(err.response); });
 
 	console.log(arrayOfPromises);
 });
