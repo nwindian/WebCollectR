@@ -45,14 +45,7 @@
     transform: scale(.8);
     
   }
-  
-#logoSmall {
-  color: #333;
-  position: center;
-  margin-bottom: 0px;
-  margin-left: 47px;
-  font-family: arial;
-  font-size: 30px;
-  font-weight: bold;
-}
 
+.top-margin {
+  margin-top: 2em;
+}

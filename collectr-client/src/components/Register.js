@@ -1,25 +1,14 @@
 import React from 'react';
 import '../index.css';
-import { Link } from 'react-router-dom'
 import axios from 'axios';
+
 axios.defaults.withCredentials = true;
 class Register extends React.Component {
 
     render() {
 
         return (
-            <div>
-                <div className="topnav">
-                    <Link to="/">
-                        <button className="HomeButton" id="b" href="#home"></button>
-                    </Link>
-                    <Link to="/Register">
-                        <button id="a">SignUp</button>
-                    </Link>
-                    <Link to="/Login">
-                        <button id="a" href="#Login">Login</button>
-                    </Link>
-                </div>
+            <>
                 <img src={require("../darkLogo.PNG")} alt="CollectR logo" id="logo"></img>
 
                 <div>
@@ -33,7 +22,7 @@ class Register extends React.Component {
                         <button type="button" id="button" onClick={this.props.handleRegister}>SignUp </button>
                     </form>
                 </div>
-            </div>
+            </>
         )
     }
 }

@@ -11,7 +11,7 @@ class SidePaneSearch extends React.Component {
 					<div className="tb">
 						<div className="td"><input id="searchInput" onChange={this.props.changeBookName} type="text" placeholder="Find a book.." required /></div>
 						<div className="td" id="s-cover">
-							<Link to="/SearchResults">
+							<Link to="SearchResults">
 								<button id="searchButton" type="button" onClick={() => this.props.getBooks()}>
 									<div id="s-circle"></div>
 									<span></span>

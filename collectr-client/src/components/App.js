@@ -2,7 +2,8 @@ import React from 'react';
 import '../index.css';
 import Routes from '../routes.js';
 import axios from 'axios';
-import Loading from './Loading.js'
+import Loading from './Loading.js';
+import HomeNavBar from './HomeNavBar.js';
 
 class App extends React.Component {
 
@@ -429,11 +430,15 @@ class App extends React.Component {
 
 	render() {
 		return (
-			<div className="HomeNavBar">
-				<GettingData password={this.state.password} email={this.state.email} setPass={this.setPass} setEmail={this.setEmail} handleRegister={this.handleRegister} handleLogin={this.handleLogin} authToken={this.state.authToken} isGettingRequest={this.state.isGettingRequest}
-					setBookSearchResults={this.setBookSearchResults} setLoading={this.setLoading} bookSearchResults={this.state.bookSearchResults} getBooks={this.getBooks} isbns={this.state.isbns} getParsedImgUrl={this.getParsedImgUrl} changeBookName={this.changeBookName} getTitle={this.getTitle} addBookToDb={this.addBookToDb} getAuthor={this.getAuthor} getUsersBooksFromDb={this.getUsersBooksFromDb} />
-				<p className="App-intro">{this.state.apiResponse}</p>
-			</div>
+			<>
+				<HomeNavBar email={this.state.email} authToken={this.state.authToken} />
+
+				<div className="HomeNavBar">
+					<GettingData password={this.state.password} email={this.state.email} setPass={this.setPass} setEmail={this.setEmail} handleRegister={this.handleRegister} handleLogin={this.handleLogin} authToken={this.state.authToken} isGettingRequest={this.state.isGettingRequest}
+						setBookSearchResults={this.setBookSearchResults} setLoading={this.setLoading} bookSearchResults={this.state.bookSearchResults} getBooks={this.getBooks} isbns={this.state.isbns} getParsedImgUrl={this.getParsedImgUrl} changeBookName={this.changeBookName} getTitle={this.getTitle} addBookToDb={this.addBookToDb} getAuthor={this.getAuthor} getUsersBooksFromDb={this.getUsersBooksFromDb} />
+					<p className="App-intro">{this.state.apiResponse}</p>
+				</div>
+			</>
 		);
 	}
 }
