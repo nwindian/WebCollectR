@@ -1,8 +1,6 @@
 import React from 'react';
 import GridLayout from 'react-grid-layout';
 import '../GridLayout.css'
-import HomeNavBar from './HomeNavBar.js';
-import SidePane from './SidePane.js'
 
 class BooksLayout extends React.Component {
 
@@ -103,38 +101,33 @@ class BooksLayout extends React.Component {
 		const layoutsArray = Array.from(layouts);
 
 		return (
+			<GridLayout className="layout" layout={layouts} cols={12} rowHeight={30} width={1200}>
 
-			<div>
-				<HomeNavBar authToken={this.props.authToken} email={this.props.email} />
-				<SidePane getBooks={this.props.getBooks} changeBookName={this.props.changeBookName} />
-				<GridLayout className="layout" layout={layouts} cols={12} rowHeight={30} width={1200}>
-
-					{
-						layoutsArray.map((item, index) => (
-							<div key={item.i} > <img id="bookImage" alt="Book cover" src={item.img} onError={(e) => { e.target.onerror = null; e.target.src = "../NoImage.png" }} />
-								<div id="title"> Title: {item.title} </div>
-								<div id="title"> Author: {item.author} </div>
-								<div id="title"> {item.isbn} </div>
-								<div class="center">
-									<label class="label">
-										<input class="label__checkbox" type="checkbox" onChange={() => this.props.addBookToDb(item)} />
-										<span class="label__text">
-											<span class="label__check">
-												<i class="fa fa-check icon"></i>
-											</span>
+				{
+					layoutsArray.map((item, index) => (
+						<div key={item.i} > <img id="bookImage" alt="Book cover" src={item.img} onError={(e) => { e.target.onerror = null; e.target.src = "../NoImage.png" }} />
+							<div id="title"> Title: {item.title} </div>
+							<div id="title"> Author: {item.author} </div>
+							<div id="title"> {item.isbn} </div>
+							<div className="center">
+								<label className="label">
+									<input className="label__checkbox" type="checkbox" onChange={() => this.props.addBookToDb(item)} />
+									<span className="label__text">
+										<span className="label__check">
+											<i className="fa fa-check icon"></i>
 										</span>
-									</label>
-								</div>
-
+									</span>
+								</label>
 							</div>
-						))
-					}
+
+						</div>
+					))
+				}
 
 
 
 
-				</GridLayout>
-			</div>
+			</GridLayout>
 		)
 
 	}
